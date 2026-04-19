@@ -1,0 +1,1336 @@
+2026-02-22 09:30:23.272 +05:00 [INF] StitchFlow API started on "2026-02-22T04:30:23.2688295Z"
+2026-02-22 09:30:50.421 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-02-22 09:30:52.586 +05:00 [INF] HTTP GET /swagger responded 404 in 2200.4769 ms
+2026-02-22 09:33:38.290 +05:00 [INF] HTTP GET /swagger responded 404 in 118.5668 ms
+2026-02-22 09:34:02.255 +05:00 [INF] HTTP GET /swagger/index.html responded 404 in 152.7544 ms
+2026-02-22 09:34:17.031 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 404 in 0.3009 ms
+2026-02-22 09:35:48.091 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 404 in 239.4778 ms
+2026-02-22 09:35:52.705 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 404 in 68.0042 ms
+2026-02-22 09:49:05.982 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 404 in 223.7646 ms
+2026-02-22 10:03:10.153 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 404 in 165.2567 ms
+2026-02-22 10:05:10.176 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 404 in 39.4212 ms
+2026-02-22 10:05:39.810 +05:00 [INF] HTTP GET /swagger responded 404 in 216.0628 ms
+2026-02-22 10:14:26.007 +05:00 [INF] HTTP GET /swagger responded 404 in 145.7576 ms
+2026-02-22 10:14:37.152 +05:00 [INF] HTTP GET /swagger responded 404 in 13.0427 ms
+2026-02-22 10:17:42.203 +05:00 [INF] StitchFlow API started on "2026-02-22T05:17:42.1837005Z"
+2026-02-22 10:18:43.236 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-02-22 10:18:43.612 +05:00 [INF] HTTP GET /swagger responded 404 in 474.4451 ms
+2026-02-22 10:18:43.830 +05:00 [INF] HTTP GET /swagger responded 404 in 7.7672 ms
+2026-02-22 10:21:19.926 +05:00 [INF] StitchFlow API started on "2026-02-22T05:21:19.9229038Z"
+2026-02-22 10:21:32.955 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 1451.0165 ms
+2026-02-22 10:21:34.188 +05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 519.5675 ms
+2026-02-22 10:21:34.188 +05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 519.3543 ms
+2026-02-22 10:21:34.496 +05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 827.0483 ms
+2026-02-22 10:21:40.463 +05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.6137 ms
+2026-02-22 10:21:42.251 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 2294.3586 ms
+2026-02-22 10:22:39.081 +05:00 [INF] HTTP GET /swagger responded 301 in 2.2030 ms
+2026-02-22 10:22:41.274 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.7778 ms
+2026-02-22 10:23:02.909 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 112.4657 ms
+2026-02-22 11:10:14.529 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-02-22 11:10:15.000 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 1062.8151 ms
+2026-02-22 11:16:05.861 +05:00 [INF] StitchFlow API started on "2026-02-22T06:16:05.8592075Z"
+2026-02-22 11:16:40.210 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 3863.2819 ms
+2026-02-22 11:16:46.021 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 2009.5305 ms
+2026-02-22 11:17:09.464 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-02-22 11:17:09.629 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 315.9559 ms
+2026-02-22 11:22:57.624 +05:00 [INF] StitchFlow API started on "2026-02-22T06:22:57.6208100Z"
+2026-02-22 11:23:52.164 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 903.2413 ms
+2026-02-22 11:24:05.416 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 4721.1326 ms
+2026-02-22 11:24:25.965 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 306.4107 ms
+2026-02-22 11:24:33.318 +05:00 [ERR] Failed executing DbCommand (370ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:24:33.593 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:24:33.793 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:24:34.204 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 8145.0778 ms
+2026-02-22 11:24:41.149 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 67.6407 ms
+2026-02-22 11:24:42.657 +05:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:24:42.750 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:24:43.391 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:24:43.477 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 2145.9138 ms
+2026-02-22 11:27:33.015 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 298.2080 ms
+2026-02-22 11:27:45.276 +05:00 [ERR] Failed executing DbCommand (508ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:27:45.905 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:27:47.393 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:27:49.531 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 15690.8085 ms
+2026-02-22 11:31:19.906 +05:00 [INF] StitchFlow API started on "2026-02-22T06:31:19.9028620Z"
+2026-02-22 11:31:26.975 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 129.7734 ms
+2026-02-22 11:31:30.128 +05:00 [ERR] Failed executing DbCommand (133ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:31:30.292 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:31:30.469 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:31:30.989 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 3878.0790 ms
+2026-02-22 11:31:38.198 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 52.1010 ms
+2026-02-22 11:31:39.461 +05:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:31:39.540 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:31:39.767 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:31:39.990 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 1457.3755 ms
+2026-02-22 11:31:57.539 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 530.6656 ms
+2026-02-22 11:32:06.756 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 2862.5685 ms
+2026-02-22 11:32:12.486 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 0.5863 ms
+2026-02-22 11:32:12.693 +05:00 [ERR] Failed executing DbCommand (28ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:32:12.758 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:32:12.863 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:32:13.048 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 457.9297 ms
+2026-02-22 11:33:19.812 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 39.3067 ms
+2026-02-22 11:33:21.754 +05:00 [ERR] Failed executing DbCommand (164ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:33:21.996 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:33:22.746 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:33:22.952 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 2066.9135 ms
+2026-02-22 11:34:15.415 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 90.8577 ms
+2026-02-22 11:34:17.503 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 668.3833 ms
+2026-02-22 11:34:26.570 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 0.1681 ms
+2026-02-22 11:34:26.708 +05:00 [ERR] Failed executing DbCommand (8ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:34:26.823 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:34:27.205 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:34:27.503 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 828.5174 ms
+2026-02-22 11:36:19.880 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 21.7127 ms
+2026-02-22 11:36:20.819 +05:00 [ERR] Failed executing DbCommand (27ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM users AS u
+    WHERE u."Email" = @__ToLower_0)
+2026-02-22 11:36:21.126 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:36:21.438 +05:00 [ERR] Unhandled exception: 42703: column u.Email does not exist
+
+POSITION: 63
+Npgsql.PostgresException (0x80004005): 42703: column u.Email does not exist
+
+POSITION: 63
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 36
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.Email does not exist
+    Hint: Perhaps you meant to reference the column "u.email".
+    Position: 63
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:36:21.641 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 1615.6470 ms
+2026-02-22 11:49:53.092 +05:00 [INF] StitchFlow API started on "2026-02-22T06:49:53.0908123Z"
+2026-02-22 11:50:18.318 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 1889.8059 ms
+2026-02-22 11:50:18.717 +05:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 274.2391 ms
+2026-02-22 11:50:18.763 +05:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 319.6815 ms
+2026-02-22 11:50:18.866 +05:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 423.4626 ms
+2026-02-22 11:50:20.891 +05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 1.1733 ms
+2026-02-22 11:50:21.870 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1149.5911 ms
+2026-02-22 11:51:18.467 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 17.4623 ms
+2026-02-22 11:51:22.008 +05:00 [ERR] Unhandled exception: Index and length must refer to a location within the string. (Parameter 'length')
+System.ArgumentOutOfRangeException: Index and length must refer to a location within the string. (Parameter 'length')
+   at System.String.ThrowSubstringArgumentOutOfRange(Int32 startIndex, Int32 length)
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at StitchFlow.API.Services.AuthService.GenerateUniqueShopCodeAsync(String shopName) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 214
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 49
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+2026-02-22 11:51:22.163 +05:00 [INF] HTTP POST /api/auth/register/tailor responded 400 in 3606.3288 ms
+2026-02-22 11:51:39.059 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 1.7383 ms
+2026-02-22 11:51:40.544 +05:00 [ERR] Unhandled exception: Index and length must refer to a location within the string. (Parameter 'length')
+System.ArgumentOutOfRangeException: Index and length must refer to a location within the string. (Parameter 'length')
+   at System.String.ThrowSubstringArgumentOutOfRange(Int32 startIndex, Int32 length)
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at StitchFlow.API.Services.AuthService.GenerateUniqueShopCodeAsync(String shopName) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 214
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 49
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+2026-02-22 11:51:40.592 +05:00 [INF] HTTP POST /api/auth/register/tailor responded 400 in 1446.1451 ms
+2026-02-22 11:54:32.203 +05:00 [INF] StitchFlow API started on "2026-02-22T06:54:32.2009758Z"
+2026-02-22 11:54:45.859 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 352.6919 ms
+2026-02-22 11:54:48.760 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1037.9588 ms
+2026-02-22 11:54:57.534 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 19.3760 ms
+2026-02-22 11:55:00.474 +05:00 [ERR] Failed executing DbCommand (30ms) [Parameters=[@__code_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM tailor_profiles AS t
+    WHERE t.shopcode = @__code_0)
+2026-02-22 11:55:00.562 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'StitchFlow.API.Data.AppDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column t.shopcode does not exist
+
+POSITION: 73
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column t.shopcode does not exist
+    Hint: Perhaps you meant to reference the column "t.shop_code".
+    Position: 73
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: column t.shopcode does not exist
+
+POSITION: 73
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column t.shopcode does not exist
+    Hint: Perhaps you meant to reference the column "t.shop_code".
+    Position: 73
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:55:00.630 +05:00 [ERR] Unhandled exception: 42703: column t.shopcode does not exist
+
+POSITION: 73
+Npgsql.PostgresException (0x80004005): 42703: column t.shopcode does not exist
+
+POSITION: 73
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at StitchFlow.API.Services.AuthService.GenerateUniqueShopCodeAsync(String shopName) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 225
+   at StitchFlow.API.Services.AuthService.RegisterTailorAsync(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Services\AuthService.cs:line 49
+   at StitchFlow.API.Controllers.AuthController.RegisterTailor(RegisterTailorRequest req) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Controllers\Controllers.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at StitchFlow.API.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\ares2\OneDrive\Desktop\stich flow\stitchflow-backend\stitchflow-backend\Middleware\ExceptionMiddleware.cs:line 22
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column t.shopcode does not exist
+    Hint: Perhaps you meant to reference the column "t.shop_code".
+    Position: 73
+    File: parse_relation.c
+    Line: 3838
+    Routine: errorMissingColumn
+2026-02-22 11:55:00.782 +05:00 [ERR] HTTP POST /api/auth/register/tailor responded 500 in 3148.0290 ms
+2026-02-22 11:58:40.900 +05:00 [INF] StitchFlow API started on "2026-02-22T06:58:40.8974209Z"
+2026-02-22 11:58:49.636 +05:00 [INF] HTTP GET /swagger/index.html responded 200 in 281.2290 ms
+2026-02-22 11:58:51.981 +05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1210.2804 ms
+2026-02-22 12:00:00.370 +05:00 [INF] HTTP OPTIONS /api/auth/register/tailor responded 204 in 18.4537 ms
+2026-02-22 12:00:04.437 +05:00 [INF] HTTP POST /api/auth/register/tailor responded 200 in 3968.0656 ms
+2026-02-22 12:00:04.473 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 1.9197 ms
+2026-02-22 12:00:04.483 +05:00 [INF] HTTP OPTIONS /api/analytics responded 204 in 0.1841 ms
+2026-02-22 12:00:06.569 +05:00 [INF] HTTP GET /api/analytics responded 200 in 2049.7624 ms
+2026-02-22 12:00:06.645 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 2142.5981 ms
+2026-02-22 12:02:40.223 +05:00 [INF] HTTP OPTIONS /api/auth/register/customer responded 204 in 0.5581 ms
+2026-02-22 12:02:41.590 +05:00 [INF] HTTP POST /api/auth/register/customer responded 200 in 1122.7845 ms
+2026-02-22 12:02:41.616 +05:00 [INF] HTTP OPTIONS /api/measurements responded 204 in 0.3709 ms
+2026-02-22 12:02:42.321 +05:00 [INF] HTTP POST /api/measurements responded 200 in 683.8389 ms
+2026-02-22 12:02:42.362 +05:00 [INF] HTTP OPTIONS /api/customers responded 204 in 0.2128 ms
+2026-02-22 12:02:42.807 +05:00 [INF] HTTP GET /api/customers responded 200 in 316.1855 ms
+2026-02-22 12:02:51.821 +05:00 [INF] HTTP OPTIONS /api/analytics responded 204 in 0.2549 ms
+2026-02-22 12:02:51.821 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.3596 ms
+2026-02-22 12:02:51.999 +05:00 [INF] HTTP GET /api/analytics responded 200 in 63.0342 ms
+2026-02-22 12:02:52.027 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 45.3101 ms
+2026-02-22 12:02:56.356 +05:00 [INF] HTTP OPTIONS /api/customers responded 204 in 0.6341 ms
+2026-02-22 12:02:56.455 +05:00 [INF] HTTP GET /api/customers responded 200 in 48.5563 ms
+2026-02-22 12:02:58.347 +05:00 [INF] HTTP OPTIONS /api/customers responded 204 in 0.2851 ms
+2026-02-22 12:02:58.347 +05:00 [INF] HTTP OPTIONS /api/designs/tailor responded 204 in 0.2982 ms
+2026-02-22 12:02:58.628 +05:00 [INF] HTTP GET /api/customers responded 200 in 64.1975 ms
+2026-02-22 12:02:58.840 +05:00 [INF] HTTP GET /api/designs/tailor responded 200 in 233.1616 ms
+2026-02-22 12:04:28.247 +05:00 [INF] HTTP OPTIONS /api/designs responded 204 in 0.6648 ms
+2026-02-22 12:04:30.503 +05:00 [INF] HTTP POST /api/designs responded 200 in 565.5142 ms
+2026-02-22 12:04:30.533 +05:00 [INF] HTTP OPTIONS /api/designs/tailor responded 204 in 0.1639 ms
+2026-02-22 12:04:30.682 +05:00 [INF] HTTP GET /api/designs/tailor responded 200 in 77.7773 ms
+2026-02-22 12:04:43.275 +05:00 [INF] HTTP OPTIONS /api/designs/tailor responded 204 in 0.1838 ms
+2026-02-22 12:04:43.426 +05:00 [INF] HTTP GET /api/designs/tailor responded 200 in 101.4397 ms
+2026-02-22 12:04:44.474 +05:00 [INF] HTTP OPTIONS /api/designs/tailor responded 204 in 1.1674 ms
+2026-02-22 12:04:44.546 +05:00 [INF] HTTP GET /api/designs/tailor responded 200 in 21.7836 ms
+2026-02-22 12:04:52.911 +05:00 [INF] HTTP OPTIONS /api/designs/tailor responded 204 in 0.3271 ms
+2026-02-22 12:04:53.031 +05:00 [INF] HTTP GET /api/designs/tailor responded 200 in 34.9562 ms
+2026-02-22 12:04:56.680 +05:00 [INF] HTTP OPTIONS /api/customers responded 204 in 0.2115 ms
+2026-02-22 12:04:56.798 +05:00 [INF] HTTP GET /api/customers responded 200 in 88.6734 ms
+2026-02-22 12:04:58.862 +05:00 [INF] HTTP OPTIONS /api/customers responded 204 in 0.1968 ms
+2026-02-22 12:04:58.863 +05:00 [INF] HTTP OPTIONS /api/designs/tailor responded 204 in 0.1115 ms
+2026-02-22 12:04:59.066 +05:00 [INF] HTTP GET /api/customers responded 200 in 52.7414 ms
+2026-02-22 12:04:59.119 +05:00 [INF] HTTP GET /api/designs/tailor responded 200 in 33.1459 ms
+2026-02-22 12:05:56.876 +05:00 [INF] HTTP OPTIONS /api/orders responded 204 in 1.8578 ms
+2026-02-22 12:05:58.222 +05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-02-22 12:05:58.421 +05:00 [INF] HTTP POST /api/orders responded 201 in 1462.7859 ms
+2026-02-22 12:05:58.445 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.2296 ms
+2026-02-22 12:05:58.543 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 82.2084 ms
+2026-02-22 12:06:03.360 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.2320 ms
+2026-02-22 12:06:03.462 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 31.5481 ms
+2026-02-22 12:06:14.102 +05:00 [INF] HTTP OPTIONS /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 204 in 0.1217 ms
+2026-02-22 12:06:14.165 +05:00 [INF] HTTP GET /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 200 in 33.1429 ms
+2026-02-22 12:06:38.911 +05:00 [INF] HTTP OPTIONS /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 204 in 28.7698 ms
+2026-02-22 12:06:39.509 +05:00 [INF] HTTP PUT /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 200 in 530.6221 ms
+2026-02-22 12:06:39.720 +05:00 [INF] HTTP OPTIONS /api/analytics responded 204 in 1.4936 ms
+2026-02-22 12:06:39.721 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.6998 ms
+2026-02-22 12:06:39.755 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.1272 ms
+2026-02-22 12:06:40.654 +05:00 [INF] HTTP GET /api/analytics responded 200 in 117.1888 ms
+2026-02-22 12:06:40.695 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 39.3747 ms
+2026-02-22 12:06:40.762 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 38.3913 ms
+2026-02-22 12:06:51.302 +05:00 [INF] HTTP OPTIONS /api/designs/tailor responded 204 in 0.5336 ms
+2026-02-22 12:06:51.428 +05:00 [INF] HTTP GET /api/designs/tailor responded 200 in 28.5060 ms
+2026-02-22 12:06:53.610 +05:00 [INF] HTTP OPTIONS /api/analytics responded 204 in 0.1375 ms
+2026-02-22 12:06:53.747 +05:00 [INF] HTTP GET /api/analytics responded 200 in 40.5860 ms
+2026-02-22 12:07:06.590 +05:00 [INF] HTTP OPTIONS /api/payments/tailor responded 204 in 0.1598 ms
+2026-02-22 12:07:06.591 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 15.4539 ms
+2026-02-22 12:07:06.769 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 46.4916 ms
+2026-02-22 12:07:06.857 +05:00 [INF] HTTP GET /api/payments/tailor responded 200 in 148.2393 ms
+2026-02-22 12:07:20.457 +05:00 [INF] HTTP OPTIONS /api/notifications responded 204 in 0.2040 ms
+2026-02-22 12:07:20.708 +05:00 [INF] HTTP GET /api/notifications responded 200 in 134.7938 ms
+2026-02-22 12:07:23.323 +05:00 [INF] HTTP OPTIONS /api/analytics responded 204 in 0.2208 ms
+2026-02-22 12:07:23.325 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.0865 ms
+2026-02-22 12:07:23.412 +05:00 [INF] HTTP GET /api/analytics responded 200 in 19.8260 ms
+2026-02-22 12:07:23.478 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 52.7791 ms
+2026-02-22 12:07:29.581 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.5400 ms
+2026-02-22 12:07:29.715 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 31.1851 ms
+2026-02-22 12:07:35.218 +05:00 [INF] HTTP OPTIONS /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 204 in 0.0770 ms
+2026-02-22 12:07:35.260 +05:00 [INF] HTTP GET /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 200 in 22.9189 ms
+2026-02-22 12:07:49.188 +05:00 [INF] HTTP OPTIONS /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 204 in 0.6202 ms
+2026-02-22 12:07:49.525 +05:00 [INF] HTTP PUT /api/orders/1cadfc1a-ea05-4dfe-80c8-2a0949764339 responded 200 in 100.0593 ms
+2026-02-22 12:07:49.625 +05:00 [INF] HTTP OPTIONS /api/analytics responded 204 in 1.7035 ms
+2026-02-22 12:07:49.626 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.0775 ms
+2026-02-22 12:07:49.676 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.1033 ms
+2026-02-22 12:07:49.775 +05:00 [INF] HTTP GET /api/analytics responded 200 in 47.3001 ms
+2026-02-22 12:07:49.840 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 34.9469 ms
+2026-02-22 12:07:49.889 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 29.5919 ms
+2026-02-22 12:07:52.676 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.0962 ms
+2026-02-22 12:07:52.961 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 216.3000 ms
+2026-02-22 12:07:53.807 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.1015 ms
+2026-02-22 12:07:53.896 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 35.1829 ms
+2026-02-22 12:07:55.374 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.1759 ms
+2026-02-22 12:07:55.453 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 28.6752 ms
+2026-02-22 12:07:58.677 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.0919 ms
+2026-02-22 12:07:58.744 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 30.9610 ms
+2026-02-22 12:08:23.295 +05:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.1490 ms
+2026-02-22 12:08:23.738 +05:00 [INF] HTTP POST /api/auth/login responded 200 in 403.5728 ms
+2026-02-22 12:08:23.764 +05:00 [INF] HTTP OPTIONS /api/orders/customer responded 204 in 0.0901 ms
+2026-02-22 12:08:24.140 +05:00 [INF] HTTP GET /api/orders/customer responded 200 in 356.7814 ms
+2026-02-22 12:08:38.223 +05:00 [INF] HTTP OPTIONS /api/designs responded 204 in 0.8343 ms
+2026-02-22 12:08:38.611 +05:00 [INF] HTTP GET /api/designs responded 200 in 262.3532 ms
+2026-02-22 12:08:41.445 +05:00 [INF] HTTP OPTIONS /api/orders/customer responded 204 in 0.0992 ms
+2026-02-22 12:08:41.547 +05:00 [INF] HTTP GET /api/orders/customer responded 200 in 29.5890 ms
+2026-02-22 12:08:42.662 +05:00 [INF] HTTP OPTIONS /api/orders/customer responded 204 in 9.7000 ms
+2026-02-22 12:08:42.717 +05:00 [INF] HTTP GET /api/orders/customer responded 200 in 20.6143 ms
+2026-02-22 12:08:46.253 +05:00 [INF] HTTP OPTIONS /api/orders/track/SF-1000 responded 204 in 0.1596 ms
+2026-02-22 12:08:46.492 +05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-02-22 12:08:46.678 +05:00 [INF] HTTP GET /api/orders/track/SF-1000 responded 200 in 366.7097 ms
+2026-02-22 12:09:07.171 +05:00 [INF] HTTP OPTIONS /api/measurements/me responded 204 in 0.1800 ms
+2026-02-22 12:09:07.275 +05:00 [INF] HTTP GET /api/measurements/me responded 400 in 80.4900 ms
+2026-02-22 12:09:08.773 +05:00 [INF] HTTP OPTIONS /api/designs responded 204 in 0.1005 ms
+2026-02-22 12:09:08.857 +05:00 [INF] HTTP GET /api/designs responded 200 in 16.9521 ms
+2026-02-22 12:09:10.710 +05:00 [INF] HTTP OPTIONS /api/notifications responded 204 in 0.0991 ms
+2026-02-22 12:09:10.811 +05:00 [INF] HTTP GET /api/notifications responded 200 in 20.3797 ms
+2026-02-22 12:09:13.215 +05:00 [INF] HTTP OPTIONS /api/notifications/c390b3ed-2cd1-4f07-bd4e-9940e2f2710b/read responded 204 in 0.0791 ms
+2026-02-22 12:09:13.284 +05:00 [INF] HTTP PUT /api/notifications/c390b3ed-2cd1-4f07-bd4e-9940e2f2710b/read responded 200 in 54.7335 ms
+2026-02-22 12:09:13.308 +05:00 [INF] HTTP OPTIONS /api/notifications responded 204 in 0.1456 ms
+2026-02-22 12:09:13.342 +05:00 [INF] HTTP GET /api/notifications responded 200 in 11.7734 ms
+2026-02-22 12:09:50.306 +05:00 [INF] HTTP OPTIONS /api/orders/customer responded 204 in 0.1603 ms
+2026-02-22 12:09:50.710 +05:00 [INF] HTTP GET /api/orders/customer responded 200 in 349.8361 ms
+2026-02-22 12:10:03.537 +05:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.0716 ms
+2026-02-22 12:10:03.667 +05:00 [INF] HTTP POST /api/auth/login responded 401 in 19.4817 ms
+2026-02-22 12:10:22.600 +05:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.1444 ms
+2026-02-22 12:10:22.973 +05:00 [INF] HTTP POST /api/auth/login responded 200 in 348.6789 ms
+2026-02-22 12:10:23.023 +05:00 [INF] HTTP OPTIONS /api/analytics responded 204 in 0.0840 ms
+2026-02-22 12:10:23.023 +05:00 [INF] HTTP OPTIONS /api/orders/tailor responded 204 in 0.1267 ms
+2026-02-22 12:10:23.167 +05:00 [INF] HTTP GET /api/analytics responded 200 in 37.7831 ms
+2026-02-22 12:10:23.932 +05:00 [INF] HTTP GET /api/orders/tailor responded 200 in 774.0387 ms
+2026-02-22 12:10:39.543 +05:00 [INF] HTTP OPTIONS /api/auth/login responded 204 in 0.5887 ms
+2026-02-22 12:10:40.013 +05:00 [INF] HTTP POST /api/auth/login responded 200 in 429.5169 ms

@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StitchFlow — Tailor Management System</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1108;--cream:#f5f0e8;--warm:#e8dfc8;--gold:#c4922a;--gold-light:#e8b84b;--gold-pale:#faf3e0;--rust:#c4522a;--sage:#4a7c59;--sage-light:#6aaa79;--muted:#7a6a52;--border:rgba(196,146,42,0.25);--shadow:0 4px 24px rgba(26,17,8,0.12);--shadow-lg:0 12px 48px rgba(26,17,8,0.18);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+.page{display:none;min-height:100vh;animation:fadeIn 0.4s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* AUTH */
+.auth-bg{min-height:100vh;background:linear-gradient(135deg,var(--ink) 0%,#2d1f0a 50%,#1a1108 100%);display:flex;align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden;}
+.auth-bg::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(196,146,42,0.04) 40px,rgba(196,146,42,0.04) 41px);}
+.auth-decor{position:absolute;font-size:22rem;font-family:'Playfair Display',serif;color:rgba(196,146,42,0.04);top:-4rem;right:-3rem;user-select:none;line-height:1;}
+.auth-card{background:var(--cream);border-radius:20px;padding:3rem;width:100%;max-width:480px;box-shadow:var(--shadow-lg),0 0 0 1px var(--border);position:relative;z-index:2;}
+.auth-logo{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);margin-bottom:0.25rem;letter-spacing:-0.02em;}
+.auth-logo span{color:var(--ink);}
+.auth-tagline{color:var(--muted);font-size:0.85rem;margin-bottom:2rem;}
+.auth-error{background:#fee2e2;color:#dc2626;padding:0.75rem 1rem;border-radius:8px;font-size:0.85rem;margin-bottom:1rem;border:1px solid #fca5a5;display:none;}
+.auth-success{background:#f0fdf4;color:#166534;padding:0.75rem 1rem;border-radius:8px;font-size:0.85rem;margin-bottom:1rem;border:1px solid #bbf7d0;display:none;}
+/* FORMS */
+.form-group{margin-bottom:1.25rem;}
+.form-label{display:block;font-size:0.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem;}
+.form-input{width:100%;padding:0.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;background:white;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--ink);transition:border-color 0.2s,box-shadow 0.2s;outline:none;}
+.form-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,146,42,0.12);}
+.form-input:disabled{opacity:0.6;cursor:not-allowed;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-grid.three{grid-template-columns:1fr 1fr 1fr;}
+.span-2{grid-column:1/-1;}
+.section-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin:1.5rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--warm);}
+select.form-input{cursor:pointer;}
+textarea.form-input{resize:vertical;min-height:80px;}
+.btn-primary{width:100%;padding:1rem;background:var(--gold);color:white;border:none;border-radius:12px;font-size:1rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:0.5rem;}
+.btn-primary:hover:not(:disabled){background:#b07e20;transform:translateY(-1px);}
+.btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.auth-switch{text-align:center;margin-top:1.25rem;font-size:0.85rem;color:var(--muted);}
+.auth-switch a{color:var(--gold);font-weight:600;cursor:pointer;text-decoration:none;}
+.type-chip{padding:0.65rem;border:1.5px solid var(--border);border-radius:8px;text-align:center;cursor:pointer;font-size:0.8rem;font-weight:500;transition:all 0.2s;background:white;font-family:'DM Sans',sans-serif;}
+.type-chip:hover,.type-chip.active{border-color:var(--gold);background:var(--gold-pale);color:var(--gold);font-weight:600;}
+.type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;margin-bottom:1.25rem;}
+/* TABS */
+.tabs{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:2px solid var(--warm);}
+.tab{padding:0.75rem 1.25rem;cursor:pointer;font-weight:600;font-size:0.875rem;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
+.tab:hover{color:var(--ink);}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+/* LAYOUT */
+.app-layout{display:flex;min-height:100vh;}
+.sidebar{width:260px;background:var(--ink);flex-shrink:0;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:50;transition:transform 0.3s;}
+.sidebar-logo{padding:1.75rem 1.5rem 1rem;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--gold);border-bottom:1px solid rgba(196,146,42,0.15);letter-spacing:-0.02em;display:flex;align-items:center;justify-content:space-between;}
+.sidebar-logo small{display:block;font-family:'DM Sans',sans-serif;font-size:0.65rem;color:rgba(255,255,255,0.4);font-weight:400;letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;}
+.sidebar-close{display:none;cursor:pointer;color:rgba(255,255,255,0.4);font-size:1.2rem;}
+.sidebar-nav{flex:1;padding:1rem 0;overflow-y:auto;}
+.nav-section{padding:0.4rem 1.5rem 0.2rem;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:0.5rem;}
+.nav-item{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1.5rem;color:rgba(255,255,255,0.6);cursor:pointer;transition:all 0.2s;font-size:0.9rem;font-weight:500;position:relative;}
+.nav-item:hover{color:white;background:rgba(196,146,42,0.1);}
+.nav-item.active{color:white;background:rgba(196,146,42,0.15);}
+.nav-item.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:var(--gold);border-radius:0 2px 2px 0;}
+.nav-icon{width:18px;text-align:center;font-size:1rem;}
+.nav-badge{margin-left:auto;background:var(--rust);color:white;font-size:0.65rem;font-weight:700;padding:1px 7px;border-radius:99px;}
+.sidebar-footer{padding:1.25rem 1.5rem;border-top:1px solid rgba(196,146,42,0.15);}
+.user-card{display:flex;align-items:center;gap:0.75rem;}
+.user-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:white;flex-shrink:0;}
+.user-name{font-size:0.85rem;font-weight:600;color:white;}
+.user-role{font-size:0.7rem;color:rgba(255,255,255,0.4);}
+.logout-btn{margin-left:auto;cursor:pointer;color:rgba(255,255,255,0.3);font-size:1.1rem;transition:color 0.2s;}
+.logout-btn:hover{color:var(--rust);}
+.main-content{margin-left:260px;flex:1;padding:2rem;min-height:100vh;}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;gap:1rem;}
+.page-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--ink);}
+.page-title span{color:var(--gold);}
+.topbar-actions{display:flex;align-items:center;gap:0.75rem;flex-shrink:0;}
+.hamburger{display:none;background:var(--ink);color:white;border:none;border-radius:10px;padding:0.6rem 0.8rem;font-size:1.1rem;cursor:pointer;}
+/* BUTTONS */
+.btn{padding:0.65rem 1.25rem;border-radius:10px;font-size:0.875rem;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn:disabled{opacity:0.6;cursor:not-allowed;}
+.btn-gold{background:var(--gold);color:white;}
+.btn-gold:hover:not(:disabled){background:#b07e20;transform:translateY(-1px);box-shadow:0 4px 14px rgba(196,146,42,0.3);}
+.btn-outline{background:white;color:var(--ink);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.btn-danger{background:#fee2e2;color:#dc2626;}
+.btn-danger:hover:not(:disabled){background:#dc2626;color:white;}
+.btn-sage{background:var(--sage);color:white;}
+.btn-sage:hover{background:#3d6b4a;}
+.btn-sm{padding:0.4rem 0.85rem;font-size:0.78rem;}
+/* CARDS / STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;}
+.stat-card{background:white;border-radius:16px;padding:1.5rem;box-shadow:var(--shadow);border:1px solid var(--border);position:relative;overflow:hidden;}
+.stat-card::after{content:'';position:absolute;right:-20px;bottom:-20px;width:80px;height:80px;border-radius:50%;background:rgba(196,146,42,0.06);}
+.stat-label{font-size:0.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem;}
+.stat-value{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--ink);line-height:1;}
+.stat-icon{position:absolute;right:1.25rem;top:1.25rem;font-size:1.5rem;opacity:0.35;}
+.card{background:white;border-radius:16px;padding:1.5rem;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:1.25rem;}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;}
+/* TABLE */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:0.875rem;}
+th{padding:0.75rem 1rem;text-align:left;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);border-bottom:2px solid var(--warm);}
+td{padding:0.9rem 1rem;border-bottom:1px solid var(--warm);color:var(--ink);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--gold-pale);}
+tr.overdue td{background:#fff5f5;}
+tr.overdue td:first-child{border-left:3px solid var(--rust);}
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:99px;font-size:0.72rem;font-weight:600;}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.badge-pending{background:#fff7ed;color:#c2410c;}.badge-pending::before{background:#c2410c;}
+.badge-progress{background:#eff6ff;color:#1d4ed8;}.badge-progress::before{background:#1d4ed8;}
+.badge-cutting{background:#fefce8;color:#854d0e;}.badge-cutting::before{background:#854d0e;}
+.badge-stitching{background:#f0fdf4;color:#166534;}.badge-stitching::before{background:#166534;}
+.badge-finishing{background:#faf5ff;color:#6b21a8;}.badge-finishing::before{background:#6b21a8;}
+.badge-ready{background:#faf5ff;color:#7e22ce;}.badge-ready::before{background:#7e22ce;}
+.badge-delivered{background:#f0fdf4;color:var(--sage);}.badge-delivered::before{background:var(--sage);}
+.badge-paid{background:#f0fdf4;color:var(--sage);}.badge-paid::before{background:var(--sage);}
+.badge-cancelled{background:#f1f5f9;color:#64748b;}.badge-cancelled::before{background:#64748b;}
+.badge-overdue{background:#fee2e2;color:var(--rust);}.badge-overdue::before{background:var(--rust);}
+/* CHIPS */
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
+.quick-card{background:white;border-radius:16px;padding:2rem 1.5rem;box-shadow:var(--shadow);border:2px solid var(--border);cursor:pointer;transition:all 0.25s;text-align:center;}
+.quick-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.quick-icon{font-size:2.5rem;margin-bottom:0.75rem;}
+.quick-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem;}
+.quick-desc{font-size:0.78rem;color:var(--muted);}
+.garment-grid{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;}
+.garment-chip{padding:0.4rem 0.85rem;border:1.5px solid var(--border);border-radius:99px;font-size:0.8rem;cursor:pointer;transition:all 0.2s;background:white;font-family:'DM Sans',sans-serif;}
+.garment-chip:hover,.garment-chip.active{border-color:var(--gold);background:var(--gold-pale);color:var(--gold);font-weight:600;}
+.filter-bar{display:flex;gap:0.5rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.filter-chip{padding:0.45rem 1rem;border-radius:99px;font-size:0.8rem;font-weight:500;border:1.5px solid var(--border);background:white;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.filter-chip:hover{border-color:var(--gold);}
+.filter-chip.active{background:var(--gold);border-color:var(--gold);color:white;font-weight:600;}
+/* DESIGNS */
+.design-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem;}
+.design-card{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);background:white;transition:all 0.2s;}
+.design-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--shadow);}
+.design-card.selected{border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,146,42,0.2);}
+.design-img{height:155px;background:linear-gradient(135deg,var(--warm),var(--gold-pale));display:flex;align-items:center;justify-content:center;font-size:3.5rem;overflow:hidden;position:relative;}
+.design-img img{width:100%;height:100%;object-fit:cover;}
+.design-img-upload{position:absolute;inset:0;background:rgba(0,0,0,0.45);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;opacity:0;transition:opacity 0.2s;cursor:pointer;font-size:0.78rem;gap:0.3rem;}
+.design-img:hover .design-img-upload{opacity:1;}
+.design-body{padding:0.85rem;}
+.design-name{font-weight:600;font-size:0.9rem;margin-bottom:0.2rem;}
+.design-meta{font-size:0.75rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;margin-top:0.5rem;}
+.design-price{font-weight:700;color:var(--gold);font-family:'DM Mono',monospace;}
+/* IMAGE UPLOAD */
+.img-upload-zone{border:2px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:all 0.2s;background:white;position:relative;overflow:hidden;}
+.img-upload-zone:hover,.img-upload-zone.drag{border-color:var(--gold);background:var(--gold-pale);}
+.img-upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.img-preview{width:100%;height:200px;object-fit:cover;border-radius:10px;margin-top:0.75rem;display:none;}
+/* TIMELINE */
+.timeline{display:flex;align-items:flex-start;margin:1.5rem 0;}
+.tl-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;}
+.tl-step:not(:last-child)::after{content:'';position:absolute;top:16px;left:50%;width:100%;height:2px;background:var(--warm);z-index:0;}
+.tl-step.done:not(:last-child)::after,.tl-step.current:not(:last-child)::after{background:var(--gold);}
+.tl-dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--warm);background:white;display:flex;align-items:center;justify-content:center;font-size:0.8rem;z-index:1;position:relative;}
+.tl-step.done .tl-dot{background:var(--gold);border-color:var(--gold);color:white;}
+.tl-step.current .tl-dot{background:white;border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 4px rgba(196,146,42,0.2);}
+.tl-label{font-size:0.62rem;font-weight:600;margin-top:0.5rem;text-align:center;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;}
+.tl-step.done .tl-label,.tl-step.current .tl-label{color:var(--ink);}
+/* MEASUREMENTS */
+.measurement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.m-card{background:var(--gold-pale);border-radius:12px;padding:1rem;text-align:center;border:1px solid var(--border);}
+.m-label{font-size:0.7rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;}
+.m-value{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--ink);}
+.m-unit{font-size:0.7rem;color:var(--muted);}
+/* EXPAND ROW */
+.expand-row{display:none;background:var(--gold-pale);}
+.expand-row td{padding:1.25rem 1rem;}
+/* CHARTS */
+.chart-bar-wrap{display:flex;flex-direction:column;gap:0.75rem;}
+.chart-bar-item{display:flex;align-items:center;gap:0.75rem;}
+.chart-bar-label{width:110px;font-size:0.78rem;color:var(--muted);text-align:right;flex-shrink:0;}
+.chart-bar-track{flex:1;height:10px;background:var(--warm);border-radius:99px;overflow:hidden;}
+.chart-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width 1.2s ease;}
+.chart-bar-val{width:80px;font-size:0.78rem;font-weight:600;font-family:'DM Mono',monospace;color:var(--ink);}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(26,17,8,0.6);z-index:100;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--cream);border-radius:20px;padding:2rem;width:100%;max-width:600px;box-shadow:var(--shadow-lg);animation:fadeIn 0.3s ease;max-height:90vh;overflow-y:auto;}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;}
+.modal-close{cursor:pointer;font-size:1.3rem;color:var(--muted);transition:color 0.2s;}
+.modal-close:hover{color:var(--rust);}
+/* CUSTOMER PORTAL */
+.portal-hero{background:linear-gradient(135deg,var(--ink) 0%,#2d1f0a 100%);border-radius:20px;padding:2.5rem;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.portal-hero::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(196,146,42,0.12);}
+.hero-greeting{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:0.25rem;}
+.hero-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:white;}
+.hero-sub{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:0.25rem;}
+.notif-dot{position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--rust);border-radius:50%;border:2px solid var(--cream);display:none;}
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:200;background:var(--ink);color:white;padding:1rem 1.5rem;border-radius:12px;font-size:0.875rem;box-shadow:var(--shadow-lg);transform:translateY(100px);opacity:0;transition:all 0.4s;max-width:360px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.error{background:#dc2626;}
+/* MISC */
+.empty-state{text-align:center;padding:3rem 2rem;color:var(--muted);}
+.empty-icon{font-size:3rem;margin-bottom:1rem;opacity:0.4;}
+.empty-text{font-size:1rem;font-weight:500;}
+.empty-sub{font-size:0.85rem;margin-top:0.3rem;}
+.spin{width:22px;height:22px;border:2.5px solid rgba(196,146,42,0.2);border-top-color:var(--gold);border-radius:50%;animation:rot 0.7s linear infinite;display:inline-block;}
+@keyframes rot{to{transform:rotate(360deg)}}
+.loading-block{display:flex;align-items:center;justify-content:center;padding:3rem;}
+.divider{height:1px;background:var(--warm);margin:1.25rem 0;}
+.text-muted{color:var(--muted);font-size:0.875rem;}
+.text-mono{font-family:'DM Mono',monospace;}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:49;}
+/* PRINT */
+@media print{
+  .sidebar,.topbar-actions,.btn,.filter-bar,.nav-badge,.hamburger{display:none!important;}
+  .main-content{margin:0;padding:1rem;}
+  .card{box-shadow:none;border:1px solid #ddd;}
+}
+/* RESPONSIVE */
+@media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr);}.quick-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);}
+  .sidebar-close{display:block;}
+  .sidebar-overlay.open{display:block;}
+  .main-content{margin-left:0;}
+  .hamburger{display:flex;}
+  .form-grid{grid-template-columns:1fr;}
+  .form-grid.three{grid-template-columns:1fr 1fr;}
+  .measurement-grid{grid-template-columns:repeat(2,1fr);}
+  .quick-grid{grid-template-columns:1fr 1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .page-title{font-size:1.4rem;}
+}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-thumb{background:var(--warm);border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="sidebar-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+
+<!-- LANDING -->
+<div class="page active" id="page-landing">
+  <div class="auth-bg">
+    <div class="auth-decor">✂</div>
+    <div style="text-align:center;max-width:600px;width:100%;position:relative;z-index:2;">
+      <div style="font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--gold);margin-bottom:0.5rem;">StitchFlow</div>
+      <div style="color:rgba(255,255,255,0.5);font-size:1rem;margin-bottom:3rem;">Tailor Management · Customer Tracking · Business Analytics</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:420px;margin:0 auto;">
+        <div onclick="navigate('page-tailor-login')" style="padding:2rem 1.5rem;border-radius:16px;background:rgba(255,255,255,0.05);border:1.5px solid rgba(196,146,42,0.3);cursor:pointer;color:white;transition:all 0.2s;" onmouseover="this.style.background='rgba(196,146,42,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+          <div style="font-size:3rem;margin-bottom:0.75rem;">🧵</div>
+          <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.3rem;">I'm a Tailor</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Manage orders, customers &amp; designs</div>
+        </div>
+        <div onclick="navigate('page-customer-login')" style="padding:2rem 1.5rem;border-radius:16px;background:rgba(255,255,255,0.05);border:1.5px solid rgba(196,146,42,0.3);cursor:pointer;color:white;transition:all 0.2s;" onmouseover="this.style.background='rgba(196,146,42,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+          <div style="font-size:3rem;margin-bottom:0.75rem;">👤</div>
+          <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.3rem;">I'm a Customer</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Track orders &amp; manage measurements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAILOR LOGIN -->
+<div class="page" id="page-tailor-login">
+  <div class="auth-bg"><div class="auth-decor">✂</div>
+    <div class="auth-card">
+      <div class="auth-logo">Stitch<span>Flow</span></div>
+      <div class="auth-tagline">Tailor Portal — Sign in to your workspace</div>
+      <div class="auth-error" id="tl-err"></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="tl-email" placeholder="hassan@example.com" onkeydown="if(event.key==='Enter')loginTailor()"></div>
+      <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="tl-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')loginTailor()"></div>
+      <button class="btn-primary" id="tl-btn" onclick="loginTailor()">Sign In as Tailor</button>
+      <div class="auth-switch" style="margin-top:1rem;"><a onclick="navigate('page-forgot-password')">Forgot password?</a></div>
+      <div class="auth-switch">Don't have an account? <a onclick="navigate('page-tailor-register')">Register your shop →</a></div>
+      <div class="auth-switch"><a onclick="navigate('page-landing')">← Back to Home</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAILOR REGISTER -->
+<div class="page" id="page-tailor-register">
+  <div class="auth-bg"><div class="auth-decor">✂</div>
+    <div class="auth-card" style="max-width:540px;">
+      <div class="auth-logo">Stitch<span>Flow</span></div>
+      <div class="auth-tagline">Create your tailor workspace</div>
+      <div class="auth-error" id="tr-err"></div>
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="tr-name" placeholder="Muhammad Hassan"></div>
+        <div class="form-group"><label class="form-label">Shop Name *</label><input class="form-input" id="tr-shop" placeholder="Hassan Tailor House"></div>
+        <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="tr-email" placeholder="hassan@example.com"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="tr-phone" placeholder="+92 300 1234567"></div>
+        <div class="form-group span-2"><label class="form-label">Address</label><input class="form-input" id="tr-address" placeholder="Main Market, Gulberg, Lahore"></div>
+        <div class="form-group"><label class="form-label">City</label><input class="form-input" id="tr-city" placeholder="Lahore"></div>
+        <div class="form-group"><label class="form-label">Password *</label><input type="password" class="form-input" id="tr-pass" placeholder="Min 8 characters"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Specialization</label>
+        <div class="type-grid">
+          <div class="type-chip" id="spec-gents" onclick="pickSpec('gents')">👔 Gents</div>
+          <div class="type-chip" id="spec-ladies" onclick="pickSpec('ladies')">👗 Ladies</div>
+          <div class="type-chip" id="spec-kids" onclick="pickSpec('kids')">👶 Kids</div>
+          <div class="type-chip active" id="spec-all" onclick="pickSpec('all')">✨ All Types</div>
+        </div>
+      </div>
+      <button class="btn-primary" id="tr-btn" onclick="registerTailor()">Create Shop Account</button>
+      <div class="auth-switch">Already registered? <a onclick="navigate('page-tailor-login')">Sign In</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER LOGIN -->
+<div class="page" id="page-customer-login">
+  <div class="auth-bg"><div class="auth-decor">👗</div>
+    <div class="auth-card">
+      <div class="auth-logo">Stitch<span>Flow</span></div>
+      <div class="auth-tagline">Customer Portal — Track your orders</div>
+      <div class="auth-error" id="cl-err"></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="cl-email" placeholder="adnan@example.com" onkeydown="if(event.key==='Enter')loginCustomer()"></div>
+      <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="cl-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')loginCustomer()"></div>
+      <button class="btn-primary" id="cl-btn" onclick="loginCustomer()">Sign In as Customer</button>
+      <div class="auth-switch" style="margin-top:1rem;"><a onclick="navigate('page-forgot-password')">Forgot password?</a></div>
+      <div class="auth-switch">New customer? <a onclick="navigate('page-customer-register')">Create account →</a></div>
+      <div class="auth-switch"><a onclick="navigate('page-landing')">← Back to Home</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER REGISTER -->
+<div class="page" id="page-customer-register">
+  <div class="auth-bg"><div class="auth-decor">👗</div>
+    <div class="auth-card">
+      <div class="auth-logo">Stitch<span>Flow</span></div>
+      <div class="auth-tagline">Create your customer account</div>
+      <div class="auth-error" id="cr-err"></div>
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="cr-name" placeholder="Adnan Khan"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="cr-phone" placeholder="+92 300 1234567"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="cr-email" placeholder="adnan@example.com"></div>
+      <div class="form-group"><label class="form-label">Tailor Shop Code <span style="font-weight:400;color:var(--muted);font-size:0.75rem;">(Ask your tailor for this)</span></label><input class="form-input" id="cr-code" placeholder="HASSAN-001"></div>
+      <div class="form-group"><label class="form-label">Password *</label><input type="password" class="form-input" id="cr-pass" placeholder="Min 8 characters"></div>
+      <button class="btn-primary" id="cr-btn" onclick="registerCustomer()">Create Account</button>
+      <div class="auth-switch">Already have an account? <a onclick="navigate('page-customer-login')">Sign In</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div class="page" id="page-forgot-password">
+  <div class="auth-bg"><div class="auth-decor">🔑</div>
+    <div class="auth-card">
+      <div class="auth-logo">Stitch<span>Flow</span></div>
+      <div class="auth-tagline">Reset your password</div>
+      <div class="auth-error" id="fp-err"></div>
+      <div class="auth-success" id="fp-ok"></div>
+      <div id="fp-step1">
+        <div class="form-group"><label class="form-label">Your Email Address</label><input type="email" class="form-input" id="fp-email" placeholder="hassan@example.com"></div>
+        <button class="btn-primary" id="fp-btn" onclick="forgotStep1()">Send Reset Code</button>
+      </div>
+      <div id="fp-step2" style="display:none;">
+        <div style="background:var(--gold-pale);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:1.25rem;font-size:0.85rem;color:var(--muted);">
+          📧 A reset code has been sent to your email. <br><br>
+          <b style="color:var(--ink);">Note:</b> If your backend doesn't have email configured, ask your admin for the code or use the direct reset below.
+        </div>
+        <div class="form-group"><label class="form-label">Reset Code</label><input class="form-input" id="fp-code" placeholder="Enter 6-digit code"></div>
+        <div class="form-group"><label class="form-label">New Password</label><input type="password" class="form-input" id="fp-newpass" placeholder="Min 8 characters"></div>
+        <div class="form-group"><label class="form-label">Confirm New Password</label><input type="password" class="form-input" id="fp-confirm" placeholder="Repeat new password"></div>
+        <button class="btn-primary" id="fp-btn2" onclick="forgotStep2()">Reset Password</button>
+      </div>
+      <div class="auth-switch"><a onclick="navigate('page-tailor-login')">← Back to Login</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAILOR DASHBOARD -->
+<div class="page" id="page-tailor-dashboard">
+  <div class="app-layout">
+    <aside class="sidebar" id="t-sidebar">
+      <div class="sidebar-logo">
+        <div><div>StitchFlow</div><small>Tailor Workspace</small></div>
+        <div class="sidebar-close" onclick="closeSidebar()">✕</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">Overview</div>
+        <div class="nav-item active" onclick="ts('overview',this)"><span class="nav-icon">🏠</span>Dashboard</div>
+        <div class="nav-section">Customers</div>
+        <div class="nav-item" onclick="ts('add-customer',this)"><span class="nav-icon">➕</span>Add Customer</div>
+        <div class="nav-item" onclick="ts('customers',this)"><span class="nav-icon">👥</span>View Customers</div>
+        <div class="nav-section">Orders</div>
+        <div class="nav-item" onclick="ts('new-order',this)"><span class="nav-icon">📋</span>New Order</div>
+        <div class="nav-item" onclick="ts('orders',this)"><span class="nav-icon">📦</span>All Orders<span class="nav-badge" id="pending-badge" style="display:none">0</span></div>
+        <div class="nav-section">Designs</div>
+        <div class="nav-item" onclick="ts('add-design',this)"><span class="nav-icon">🎨</span>Add Design</div>
+        <div class="nav-item" onclick="ts('designs',this)"><span class="nav-icon">🖼️</span>Design Gallery</div>
+        <div class="nav-section">Business</div>
+        <div class="nav-item" onclick="ts('analytics',this)"><span class="nav-icon">📊</span>Analytics</div>
+        <div class="nav-item" onclick="ts('payments',this)"><span class="nav-icon">💳</span>Payments</div>
+        <div class="nav-item" onclick="ts('notifications',this)"><span class="nav-icon">🔔</span>Notifications<span class="nav-badge" id="t-notif-cnt" style="display:none"></span></div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar" id="t-avatar">T</div>
+          <div><div class="user-name" id="t-uname">—</div><div class="user-role" id="t-urole">Tailor</div></div>
+          <div class="logout-btn" onclick="logout()" title="Logout">⏻</div>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+
+      <!-- OVERVIEW -->
+      <section id="t-overview" class="tsec">
+        <div class="topbar">
+          <div>
+            <button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button>
+            <div class="page-title">Hello, <span id="t-greeting">—</span> 👋</div>
+            <div class="text-muted" id="t-shopsub"></div>
+          </div>
+          <div class="topbar-actions">
+            <div style="position:relative;cursor:pointer;font-size:1.2rem;padding:0.5rem;" onclick="ts('notifications',null)">🔔<div class="notif-dot" id="notif-dot"></div></div>
+            <button class="btn btn-gold" onclick="ts('new-order',null)">＋ New Order</button>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-label">Total Orders</div><div class="stat-value" id="s-total">—</div></div>
+          <div class="stat-card"><div class="stat-icon">⏳</div><div class="stat-label">Pending</div><div class="stat-value" id="s-pending">—</div></div>
+          <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-label">Completed</div><div class="stat-value" id="s-done">—</div></div>
+          <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-label">Revenue (Month)</div><div class="stat-value" id="s-rev">—</div></div>
+        </div>
+        <div class="quick-grid">
+          <div class="quick-card" onclick="ts('add-customer',null)"><div class="quick-icon">👤</div><div class="quick-title">Add Customer</div><div class="quick-desc">Register with measurements</div></div>
+          <div class="quick-card" onclick="ts('new-order',null)"><div class="quick-icon">📋</div><div class="quick-title">New Order</div><div class="quick-desc">Create order with design</div></div>
+          <div class="quick-card" onclick="ts('orders',null)"><div class="quick-icon">📦</div><div class="quick-title">View Orders</div><div class="quick-desc">Track &amp; update active orders</div></div>
+          <div class="quick-card" onclick="ts('designs',null)"><div class="quick-icon">🎨</div><div class="quick-title">Design Gallery</div><div class="quick-desc">Upload &amp; manage designs</div></div>
+          <div class="quick-card" onclick="ts('analytics',null)"><div class="quick-icon">📊</div><div class="quick-title">Analytics</div><div class="quick-desc">Revenue &amp; customer insights</div></div>
+          <div class="quick-card" onclick="ts('customers',null)"><div class="quick-icon">👥</div><div class="quick-title">Customers</div><div class="quick-desc">View profiles &amp; measurements</div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Recent Orders</div><button class="btn btn-outline btn-sm" onclick="ts('orders',null)">View All</button></div>
+          <div id="recent-orders"><div class="loading-block"><div class="spin"></div></div></div>
+        </div>
+      </section>
+
+      <!-- ADD CUSTOMER (with tabs: Info / Measurements / First Order) -->
+      <section id="t-add-customer" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">Add <span>Customer</span></div></div>
+          <button class="btn btn-outline" onclick="ts('customers',null)">View All Customers</button>
+        </div>
+        <div class="card" style="max-width:820px;">
+          <div class="tabs">
+            <div class="tab active" onclick="switchTab('ac',0,this)">👤 Personal Info</div>
+            <div class="tab" onclick="switchTab('ac',1,this)">📐 Measurements</div>
+            <div class="tab" onclick="switchTab('ac',2,this)">📋 First Order</div>
+          </div>
+          <!-- Tab 0: Personal Info -->
+          <div class="tab-panel active" id="ac-tab0">
+            <div class="form-grid">
+              <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="ac-name" placeholder="Adnan Khan"></div>
+              <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="ac-phone" placeholder="+92 300 1234567"></div>
+              <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="ac-email" placeholder="adnan@example.com"></div>
+              <div class="form-group"><label class="form-label">Login Password *</label><input type="password" class="form-input" id="ac-pass" placeholder="Customer login password"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Usual Garment Types</label>
+              <div class="garment-grid" id="ac-garments">
+                <div class="garment-chip active" onclick="toggleG(this)">Shalwar Kameez</div>
+                <div class="garment-chip" onclick="toggleG(this)">Sherwani</div>
+                <div class="garment-chip" onclick="toggleG(this)">Pant Coat</div>
+                <div class="garment-chip" onclick="toggleG(this)">Suit</div>
+                <div class="garment-chip" onclick="toggleG(this)">Kurta</div>
+                <div class="garment-chip" onclick="toggleG(this)">Waistcoat</div>
+                <div class="garment-chip" onclick="toggleG(this)">Frock</div>
+                <div class="garment-chip" onclick="toggleG(this)">Blouse</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:0.75rem;margin-top:1.25rem;">
+              <button class="btn btn-gold" onclick="switchTab('ac',1,null)">Next: Measurements →</button>
+              <button class="btn btn-outline" onclick="saveCustomerOnly()">Save Without Measurements</button>
+            </div>
+          </div>
+          <!-- Tab 1: Measurements -->
+          <div class="tab-panel" id="ac-tab1">
+            <div style="background:var(--gold-pale);border-radius:10px;padding:0.9rem 1rem;margin-bottom:1.25rem;font-size:0.85rem;color:var(--muted);">💡 All fields optional — fill what you know. You can update later.</div>
+            <div class="form-grid three">
+              <div class="form-group"><label class="form-label">Neck"</label><input class="form-input" id="ac-neck" placeholder="14.5"></div>
+              <div class="form-group"><label class="form-label">Chest"</label><input class="form-input" id="ac-chest" placeholder="38"></div>
+              <div class="form-group"><label class="form-label">Waist"</label><input class="form-input" id="ac-waist" placeholder="32"></div>
+              <div class="form-group"><label class="form-label">Shoulder"</label><input class="form-input" id="ac-shoulder" placeholder="16"></div>
+              <div class="form-group"><label class="form-label">Sleeve"</label><input class="form-input" id="ac-sleeve" placeholder="24"></div>
+              <div class="form-group"><label class="form-label">Length"</label><input class="form-input" id="ac-length" placeholder="42"></div>
+              <div class="form-group"><label class="form-label">Hip"</label><input class="form-input" id="ac-hip" placeholder="36"></div>
+              <div class="form-group"><label class="form-label">Thigh"</label><input class="form-input" id="ac-thigh" placeholder="24"></div>
+              <div class="form-group"><label class="form-label">Inseam"</label><input class="form-input" id="ac-inseam" placeholder="30"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Tailor Notes</label><textarea class="form-input" id="ac-notes" placeholder="Special notes about posture, body shape…"></textarea></div>
+            <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+              <button class="btn btn-gold" onclick="switchTab('ac',2,null)">Next: First Order →</button>
+              <button class="btn btn-outline" onclick="saveCustomerOnly()">Save Now (skip order)</button>
+              <button class="btn btn-outline" onclick="switchTab('ac',0,null)">← Back</button>
+            </div>
+          </div>
+          <!-- Tab 2: First Order -->
+          <div class="tab-panel" id="ac-tab2">
+            <div style="background:var(--gold-pale);border-radius:10px;padding:0.9rem 1rem;margin-bottom:1.25rem;font-size:0.85rem;color:var(--muted);">📋 Optional — create a first order right now, or skip and do it later.</div>
+            <div class="form-group"><label class="form-label">Garment Type</label>
+              <div class="garment-grid" id="fo-garments">
+                <div class="garment-chip active" onclick="toggleG(this)">Shalwar Kameez</div>
+                <div class="garment-chip" onclick="toggleG(this)">Sherwani</div>
+                <div class="garment-chip" onclick="toggleG(this)">Pant Coat</div>
+                <div class="garment-chip" onclick="toggleG(this)">Suit</div>
+                <div class="garment-chip" onclick="toggleG(this)">Kurta</div>
+                <div class="garment-chip" onclick="toggleG(this)">Waistcoat</div>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group"><label class="form-label">Fabric/Cloth Description</label><input class="form-input" id="fo-cloth" placeholder="White lawn, customer provided"></div>
+              <div class="form-group"><label class="form-label">Delivery Date</label><input type="date" class="form-input" id="fo-delivery"></div>
+              <div class="form-group"><label class="form-label">Total Price (Rs)</label><input type="number" class="form-input" id="fo-total" placeholder="3500"></div>
+              <div class="form-group"><label class="form-label">Advance Paid (Rs)</label><input type="number" class="form-input" id="fo-advance" placeholder="1500"></div>
+              <div class="form-group"><label class="form-label">Priority</label>
+                <select class="form-input" id="fo-priority"><option value="normal">Normal</option><option value="urgent">Urgent</option><option value="rush">Rush</option></select>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label">Special Instructions</label><textarea class="form-input" id="fo-notes" placeholder="Any special instructions…"></textarea></div>
+            <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+              <button class="btn btn-gold" id="ac-btn" onclick="saveCustomerWithOrder()">💾 Save Customer &amp; Create Order</button>
+              <button class="btn btn-outline" onclick="saveCustomerOnly()">Save Customer Only</button>
+              <button class="btn btn-outline" onclick="switchTab('ac',1,null)">← Back</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUSTOMERS LIST -->
+      <section id="t-customers" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">All <span>Customers</span></div></div>
+          <button class="btn btn-gold" onclick="ts('add-customer',null)">＋ Add Customer</button>
+        </div>
+        <div class="card">
+          <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;align-items:center;flex-wrap:wrap;">
+            <div style="position:relative;flex:1;min-width:200px;max-width:320px;"><span style="position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:var(--muted);">🔍</span><input class="form-input" style="padding-left:2.5rem;" id="cust-search" placeholder="Search name or phone…" oninput="debounceSearch()"></div>
+            <div class="text-muted" id="cust-count" style="font-size:0.8rem;"></div>
+          </div>
+          <div id="customers-tbl"><div class="loading-block"><div class="spin"></div></div></div>
+        </div>
+      </section>
+
+      <!-- MEASUREMENTS -->
+      <section id="t-measurements" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">Measurements — <span id="meas-cname">—</span></div></div>
+          <div class="topbar-actions"><button class="btn btn-outline" onclick="ts('customers',null)">← Back</button><button class="btn btn-gold" id="meas-save-btn" onclick="saveMeasurements()">Save Changes</button></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Current Measurements</div><span id="meas-updated" class="text-muted" style="font-size:0.75rem;"></span></div>
+            <div class="measurement-grid" id="meas-display" style="margin-bottom:1.25rem;"></div>
+            <div class="divider"></div>
+            <div class="section-label">Update Measurements (inches)</div>
+            <div class="form-grid three">
+              <div class="form-group"><label class="form-label">Neck"</label><input class="form-input" id="em-neck"></div>
+              <div class="form-group"><label class="form-label">Chest"</label><input class="form-input" id="em-chest"></div>
+              <div class="form-group"><label class="form-label">Waist"</label><input class="form-input" id="em-waist"></div>
+              <div class="form-group"><label class="form-label">Shoulder"</label><input class="form-input" id="em-shoulder"></div>
+              <div class="form-group"><label class="form-label">Sleeve"</label><input class="form-input" id="em-sleeve"></div>
+              <div class="form-group"><label class="form-label">Length"</label><input class="form-input" id="em-length"></div>
+              <div class="form-group"><label class="form-label">Hip"</label><input class="form-input" id="em-hip"></div>
+              <div class="form-group"><label class="form-label">Thigh"</label><input class="form-input" id="em-thigh"></div>
+              <div class="form-group"><label class="form-label">Inseam"</label><input class="form-input" id="em-inseam"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Notes</label><textarea class="form-input" id="em-notes"></textarea></div>
+          </div>
+          <div class="card"><div class="card-title" style="margin-bottom:1rem;">Measurement History</div><div id="meas-history"></div></div>
+        </div>
+      </section>
+
+      <!-- NEW ORDER -->
+      <section id="t-new-order" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">New <span>Order</span></div></div>
+          <button class="btn btn-outline" onclick="ts('orders',null)">← All Orders</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+          <div class="card">
+            <div class="card-title" style="margin-bottom:1rem;">Order Details</div>
+            <div class="form-group"><label class="form-label">Customer *</label><select class="form-input" id="o-customer"><option value="">Select customer…</option></select></div>
+            <div class="form-group"><label class="form-label">Garment Type</label>
+              <div class="garment-grid" id="o-garments">
+                <div class="garment-chip active" onclick="toggleG(this)">Shalwar Kameez</div>
+                <div class="garment-chip" onclick="toggleG(this)">Sherwani</div>
+                <div class="garment-chip" onclick="toggleG(this)">Pant Coat</div>
+                <div class="garment-chip" onclick="toggleG(this)">Suit</div>
+                <div class="garment-chip" onclick="toggleG(this)">Kurta</div>
+                <div class="garment-chip" onclick="toggleG(this)">Waistcoat</div>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label">Fabric / Cloth <span style="font-weight:400;font-size:0.75rem;color:var(--muted);">(description or source)</span></label><input class="form-input" id="o-cloth" placeholder="White lawn — customer provided / bought from shop"></div>
+            <div class="form-group"><label class="form-label">Selected Design</label><input class="form-input" id="o-design-name" placeholder="Pick from gallery →" readonly><input type="hidden" id="o-design-id"></div>
+            <div class="form-grid">
+              <div class="form-group"><label class="form-label">Delivery Date</label><input type="date" class="form-input" id="o-delivery"></div>
+              <div class="form-group"><label class="form-label">Priority</label><select class="form-input" id="o-priority"><option value="normal">Normal</option><option value="urgent">Urgent</option><option value="rush">Rush</option></select></div>
+              <div class="form-group"><label class="form-label">Total (Rs)</label><input type="number" class="form-input" id="o-total" placeholder="3500"></div>
+              <div class="form-group"><label class="form-label">Advance Paid (Rs)</label><input type="number" class="form-input" id="o-advance" placeholder="1500"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Special Instructions</label><textarea class="form-input" id="o-notes" placeholder="Any special notes…"></textarea></div>
+            <div style="margin-top:1rem;display:flex;gap:0.75rem;">
+              <button class="btn btn-gold" id="o-btn" onclick="createOrder()">Create Order</button>
+              <button class="btn btn-outline" onclick="ts('overview',null)">Cancel</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Pick a Design</div><span class="text-muted" style="font-size:0.75rem;">Optional</span></div>
+            <div class="filter-bar">
+              <div class="filter-chip active" onclick="filterPicker(this,'')">All</div>
+              <div class="filter-chip" onclick="filterPicker(this,'men')">Men</div>
+              <div class="filter-chip" onclick="filterPicker(this,'women')">Women</div>
+              <div class="filter-chip" onclick="filterPicker(this,'kids')">Kids</div>
+            </div>
+            <div class="design-grid" id="o-picker" style="grid-template-columns:repeat(2,1fr);"><div class="loading-block" style="grid-column:1/-1;"><div class="spin"></div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ALL ORDERS -->
+      <section id="t-orders" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">All <span>Orders</span></div></div>
+          <div class="topbar-actions">
+            <button class="btn btn-outline btn-sm" onclick="window.print()">🖨️ Print</button>
+            <button class="btn btn-gold" onclick="ts('new-order',null)">＋ New Order</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="filter-bar" id="order-filters">
+            <div class="filter-chip active" onclick="filterOrders(this,'')">All</div>
+            <div class="filter-chip" onclick="filterOrders(this,'pending')">Pending</div>
+            <div class="filter-chip" onclick="filterOrders(this,'in_progress')">In Progress</div>
+            <div class="filter-chip" onclick="filterOrders(this,'cutting')">Cutting</div>
+            <div class="filter-chip" onclick="filterOrders(this,'stitching')">Stitching</div>
+            <div class="filter-chip" onclick="filterOrders(this,'ready')">Ready</div>
+            <div class="filter-chip" onclick="filterOrders(this,'delivered')">Delivered</div>
+          </div>
+          <div id="orders-tbl"><div class="loading-block"><div class="spin"></div></div></div>
+        </div>
+      </section>
+
+      <!-- ADD DESIGN -->
+      <section id="t-add-design" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">Add <span>Design</span></div></div>
+          <button class="btn btn-outline" onclick="ts('designs',null)">View Gallery →</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:900px;">
+          <div class="card">
+            <div class="form-group"><label class="form-label">Design Name *</label><input class="form-input" id="d-name" placeholder="Royal Heritage Sherwani"></div>
+            <div class="form-grid">
+              <div class="form-group"><label class="form-label">Category</label><select class="form-input" id="d-cat"><option value="men">Men</option><option value="women">Women</option><option value="kids">Kids</option><option value="unisex">Unisex</option></select></div>
+              <div class="form-group"><label class="form-label">Garment Type</label><select class="form-input" id="d-garment"><option>Shalwar Kameez</option><option>Sherwani</option><option>Pant Coat</option><option>Suit</option><option>Kurta</option><option>Waistcoat</option><option>Frock</option><option>Blouse</option><option>Sharara</option></select></div>
+              <div class="form-group"><label class="form-label">Base Price (Rs)</label><input type="number" class="form-input" id="d-price" placeholder="4500"></div>
+              <div class="form-group"><label class="form-label">Stitching Days</label><input type="number" class="form-input" id="d-days" value="7"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Description</label><textarea class="form-input" id="d-desc" placeholder="Describe this design…"></textarea></div>
+            <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+              <button class="btn btn-gold" id="d-btn" onclick="publishDesign()">Publish Design</button>
+              <button class="btn btn-outline" onclick="clearDesign()">Clear</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="margin-bottom:1rem;">Design Photo</div>
+            <div class="img-upload-zone" id="d-upload-zone" onclick="document.getElementById('d-img-file').click()">
+              <input type="file" id="d-img-file" accept="image/*" style="display:none" onchange="previewDesignImg(this)">
+              <div id="d-upload-hint">
+                <div style="font-size:2.5rem;margin-bottom:0.5rem;">📷</div>
+                <div style="font-weight:600;margin-bottom:0.25rem;">Click to upload photo</div>
+                <div style="font-size:0.78rem;color:var(--muted);">JPG, PNG, WEBP — max 5MB</div>
+              </div>
+              <img id="d-img-preview" class="img-preview" alt="Preview">
+            </div>
+            <div id="d-img-status" style="margin-top:0.5rem;font-size:0.78rem;color:var(--muted);"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DESIGN GALLERY -->
+      <section id="t-designs" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">Design <span>Gallery</span></div></div>
+          <button class="btn btn-gold" onclick="ts('add-design',null)">＋ Add Design</button>
+        </div>
+        <div class="card">
+          <div class="filter-bar">
+            <div class="filter-chip active" onclick="filterGallery(this,'')">All</div>
+            <div class="filter-chip" onclick="filterGallery(this,'men')">Men</div>
+            <div class="filter-chip" onclick="filterGallery(this,'women')">Women</div>
+            <div class="filter-chip" onclick="filterGallery(this,'kids')">Kids</div>
+          </div>
+          <div class="design-grid" id="gallery-grid"><div class="loading-block" style="grid-column:1/-1;"><div class="spin"></div></div></div>
+        </div>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section id="t-analytics" class="tsec" style="display:none;">
+        <div class="topbar"><div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">Business <span>Analytics</span></div></div></div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-label">Monthly Revenue</div><div class="stat-value" id="a-rev">—</div></div>
+          <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-label">Total Orders</div><div class="stat-value" id="a-ord">—</div></div>
+          <div class="stat-card"><div class="stat-icon">👥</div><div class="stat-label">Repeat Customers</div><div class="stat-value" id="a-rep">—</div></div>
+          <div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-label">Avg Rating</div><div class="stat-value" id="a-rat">—</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+          <div class="card"><div class="card-title" style="margin-bottom:1.25rem;">Revenue by Month</div><div id="chart-rev" class="chart-bar-wrap"></div></div>
+          <div class="card"><div class="card-title" style="margin-bottom:1.25rem;">Orders by Garment Type</div><div id="chart-gar" class="chart-bar-wrap"></div></div>
+          <div class="card"><div class="card-title" style="margin-bottom:1.25rem;">Top Designs</div><div id="chart-des" class="chart-bar-wrap"></div></div>
+          <div class="card"><div class="card-title" style="margin-bottom:1.25rem;">Summary</div><div id="chart-sum"></div></div>
+        </div>
+      </section>
+
+      <!-- PAYMENTS -->
+      <section id="t-payments" class="tsec" style="display:none;">
+        <div class="topbar"><div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">Payment <span>Records</span></div></div></div>
+        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-label">Total Received</div><div class="stat-value" id="p-recv">—</div></div>
+          <div class="stat-card"><div class="stat-icon">⏳</div><div class="stat-label">Pending Balance</div><div class="stat-value" id="p-due">—</div></div>
+          <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-label">Orders</div><div class="stat-value" id="p-cnt">—</div></div>
+        </div>
+        <div class="card"><div class="card-title" style="margin-bottom:1rem;">Payment History</div><div id="pay-tbl"><div class="loading-block"><div class="spin"></div></div></div></div>
+      </section>
+
+      <!-- NOTIFICATIONS TAILOR -->
+      <section id="t-notifications" class="tsec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('t-sidebar')">☰</button><div class="page-title">Notifications</div></div>
+          <button class="btn btn-outline btn-sm" onclick="markAllRead()">Mark All Read</button>
+        </div>
+        <div class="card" style="max-width:680px;"><div id="t-notif-body"><div class="loading-block"><div class="spin"></div></div></div></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- CUSTOMER DASHBOARD -->
+<div class="page" id="page-customer-dashboard">
+  <div class="app-layout">
+    <aside class="sidebar" id="c-sidebar">
+      <div class="sidebar-logo">
+        <div><div>StitchFlow</div><small>Customer Portal</small></div>
+        <div class="sidebar-close" onclick="closeSidebar()">✕</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">My Account</div>
+        <div class="nav-item active" onclick="cs('c-home',this)"><span class="nav-icon">🏠</span>Dashboard</div>
+        <div class="nav-section">Orders</div>
+        <div class="nav-item" onclick="cs('c-orders',this)"><span class="nav-icon">📦</span>My Orders</div>
+        <div class="nav-item" onclick="cs('c-track',this)"><span class="nav-icon">🔍</span>Track Order</div>
+        <div class="nav-section">Profile</div>
+        <div class="nav-item" onclick="cs('c-meas',this)"><span class="nav-icon">📐</span>My Measurements</div>
+        <div class="nav-item" onclick="cs('c-designs',this)"><span class="nav-icon">🎨</span>Browse Designs</div>
+        <div class="nav-section">More</div>
+        <div class="nav-item" onclick="cs('c-notifs',this)"><span class="nav-icon">🔔</span>Notifications<span class="nav-badge" id="cn-badge" style="display:none"></span></div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar" id="c-avatar" style="background:linear-gradient(135deg,var(--sage),var(--sage-light));">A</div>
+          <div><div class="user-name" id="c-uname">—</div><div class="user-role">Customer</div></div>
+          <div class="logout-btn" onclick="logout()" title="Logout">⏻</div>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+
+      <section id="c-home" class="csec">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('c-sidebar')">☰</button></div>
+        </div>
+        <div class="portal-hero">
+          <div class="hero-greeting">Welcome back 👋</div>
+          <div class="hero-name" id="c-hero-name">—</div>
+          <div class="hero-sub">Your clothes are in good hands</div>
+          <div style="display:flex;gap:0.75rem;margin-top:1.5rem;position:relative;z-index:2;">
+            <button class="btn btn-gold" onclick="cs('c-track',null)">🔍 Track Order</button>
+            <button class="btn" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);" onclick="cs('c-designs',null)">🎨 Browse Designs</button>
+          </div>
+        </div>
+        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-label">Total Orders</div><div class="stat-value" id="c-s1">—</div></div>
+          <div class="stat-card"><div class="stat-icon">🔄</div><div class="stat-label">Active</div><div class="stat-value" id="c-s2">—</div></div>
+          <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-label">Completed</div><div class="stat-value" id="c-s3">—</div></div>
+        </div>
+        <div class="card"><div class="card-header"><div class="card-title">Recent Orders</div><button class="btn btn-outline btn-sm" onclick="cs('c-orders',null)">View All</button></div><div id="c-recent"><div class="loading-block"><div class="spin"></div></div></div></div>
+      </section>
+
+      <section id="c-orders" class="csec" style="display:none;">
+        <div class="topbar"><div><button class="hamburger" onclick="openSidebar('c-sidebar')">☰</button><div class="page-title">My <span>Orders</span></div></div></div>
+        <div class="card"><div id="c-orders-tbl"><div class="loading-block"><div class="spin"></div></div></div></div>
+      </section>
+
+      <section id="c-track" class="csec" style="display:none;">
+        <div class="topbar"><div><button class="hamburger" onclick="openSidebar('c-sidebar')">☰</button><div class="page-title">Track <span>Order</span></div></div></div>
+        <div style="max-width:680px;">
+          <div class="card" style="margin-bottom:1.25rem;">
+            <div style="display:flex;gap:0.75rem;">
+              <input class="form-input" id="track-inp" placeholder="Enter Order ID e.g. SF-1031" onkeydown="if(event.key==='Enter')trackOrder()">
+              <button class="btn btn-gold" onclick="trackOrder()">Track</button>
+            </div>
+          </div>
+          <div id="track-result"></div>
+        </div>
+      </section>
+
+      <section id="c-meas" class="csec" style="display:none;">
+        <div class="topbar"><div><button class="hamburger" onclick="openSidebar('c-sidebar')">☰</button><div class="page-title">My <span>Measurements</span></div></div></div>
+        <div style="max-width:680px;" id="c-meas-content"><div class="loading-block"><div class="spin"></div></div></div>
+      </section>
+
+      <section id="c-designs" class="csec" style="display:none;">
+        <div class="topbar"><div><button class="hamburger" onclick="openSidebar('c-sidebar')">☰</button><div class="page-title">Browse <span>Designs</span></div></div></div>
+        <div class="card">
+          <div class="filter-bar">
+            <div class="filter-chip active" onclick="filterCDesigns(this,'')">All</div>
+            <div class="filter-chip" onclick="filterCDesigns(this,'men')">Men</div>
+            <div class="filter-chip" onclick="filterCDesigns(this,'women')">Women</div>
+            <div class="filter-chip" onclick="filterCDesigns(this,'kids')">Kids</div>
+          </div>
+          <div class="design-grid" id="c-design-grid"><div class="loading-block" style="grid-column:1/-1;"><div class="spin"></div></div></div>
+        </div>
+      </section>
+
+      <section id="c-notifs" class="csec" style="display:none;">
+        <div class="topbar">
+          <div><button class="hamburger" onclick="openSidebar('c-sidebar')">☰</button><div class="page-title">Notifications</div></div>
+          <button class="btn btn-outline btn-sm" onclick="markAllRead()">Mark All Read</button>
+        </div>
+        <div class="card" style="max-width:640px;"><div id="c-notif-body"><div class="loading-block"><div class="spin"></div></div></div></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ORDER MANAGE MODAL (improved with payment recording) -->
+<div class="modal-overlay" id="order-modal">
+  <div class="modal" style="max-width:640px;">
+    <div class="modal-header"><div class="modal-title" id="m-title">Manage Order</div><div class="modal-close" onclick="closeModal('order-modal')">✕</div></div>
+    <div id="m-info" style="margin-bottom:1rem;padding:1rem;background:var(--gold-pale);border-radius:10px;"></div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('mo',0,this)">📋 Status &amp; Details</div>
+      <div class="tab" onclick="switchTab('mo',1,this)">💳 Record Payment</div>
+      <div class="tab" onclick="switchTab('mo',2,this)">🖨️ Print Slip</div>
+    </div>
+    <div class="tab-panel active" id="mo-tab0">
+      <div class="form-group"><label class="form-label">Update Status</label>
+        <select class="form-input" id="m-status">
+          <option value="pending">Pending</option><option value="in_progress">In Progress</option>
+          <option value="cutting">Cutting</option><option value="stitching">Stitching</option>
+          <option value="finishing">Finishing</option><option value="ready">Ready</option>
+          <option value="delivered">Delivered</option><option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Delivery Date</label><input type="date" class="form-input" id="m-delivery"></div>
+        <div class="form-group"><label class="form-label">Priority</label><select class="form-input" id="m-priority"><option value="normal">Normal</option><option value="urgent">Urgent</option><option value="rush">Rush</option></select></div>
+        <div class="form-group"><label class="form-label">Total (Rs)</label><input type="number" class="form-input" id="m-total"></div>
+        <div class="form-group"><label class="form-label">Advance Paid (Rs)</label><input type="number" class="form-input" id="m-advance"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Note to Customer</label><textarea class="form-input" id="m-note" placeholder="A message for the customer…"></textarea></div>
+      <div style="display:flex;gap:0.75rem;justify-content:flex-end;margin-top:0.5rem;">
+        <button class="btn btn-outline" onclick="closeModal('order-modal')">Cancel</button>
+        <button class="btn btn-sage" id="m-notify-btn" onclick="saveModal(true)">Save &amp; Notify</button>
+        <button class="btn btn-gold" id="m-save-btn" onclick="saveModal(false)">Save Changes</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="mo-tab1">
+      <div style="background:var(--gold-pale);border-radius:10px;padding:1rem;margin-bottom:1.25rem;font-size:0.85rem;">
+        Balance Due: <b id="m-bal-display" style="color:var(--rust);font-size:1.1rem;">—</b>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Amount Received (Rs)</label><input type="number" class="form-input" id="pay-amount" placeholder="1000"></div>
+        <div class="form-group"><label class="form-label">Payment Method</label>
+          <select class="form-input" id="pay-method">
+            <option value="cash">Cash</option>
+            <option value="bank_transfer">Bank Transfer</option>
+            <option value="easypaisa">EasyPaisa</option>
+            <option value="jazzcash">JazzCash</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Note</label><input class="form-input" id="pay-note" placeholder="e.g. Remaining balance on delivery"></div>
+      <div style="display:flex;gap:0.75rem;justify-content:flex-end;margin-top:0.5rem;">
+        <button class="btn btn-outline" onclick="closeModal('order-modal')">Cancel</button>
+        <button class="btn btn-gold" id="pay-btn" onclick="recordPayment()">Record Payment</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="mo-tab2">
+      <div id="slip-content" style="font-family:'DM Sans',sans-serif;padding:0.5rem;"></div>
+      <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+        <button class="btn btn-gold" onclick="window.print()">🖨️ Print This Slip</button>
+        <button class="btn btn-outline" onclick="closeModal('order-modal')">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER PROFILE MODAL -->
+<div class="modal-overlay" id="cust-modal">
+  <div class="modal" style="max-width:680px;">
+    <div class="modal-header"><div class="modal-title" id="cm-title">Customer Profile</div><div class="modal-close" onclick="closeModal('cust-modal')">✕</div></div>
+    <div id="cm-body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = 'http://localhost:5000/api';
+let TOKEN = localStorage.getItem('sf_token') || '';
+let USER  = JSON.parse(localStorage.getItem('sf_user') || 'null');
+let MODAL_ORDER_ID = null, MODAL_ORDER_DATA = null;
+let MEAS_CUST_ID = null;
+let _searchTimer = null, _toastTimer = null;
+let _designImgBase64 = null;
+
+// ── API ──────────────────────────────────────────────
+async function api(method, path, body = null, isPublic = false) {
+  const h = {'Content-Type':'application/json'};
+  if (TOKEN && !isPublic) h['Authorization'] = 'Bearer ' + TOKEN;
+  try {
+    const res = await fetch(API + path, {method, headers:h, body: body ? JSON.stringify(body) : null});
+    const data = await res.json();
+    if (!data.success) throw new Error(data.errors?.[0] || data.message || 'Request failed');
+    return data.data;
+  } catch(err) {
+    if (err.message === 'Failed to fetch') throw new Error('Cannot connect to backend. Make sure dotnet run is running on http://localhost:5000');
+    throw err;
+  }
+}
+
+// ── TOAST ────────────────────────────────────────────
+function toast(msg, isErr = false) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.className = 'toast show' + (isErr ? ' error' : '');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+// ── NAVIGATION ───────────────────────────────────────
+function navigate(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function ts(name, navEl) {
+  document.querySelectorAll('.tsec').forEach(s => s.style.display = 'none');
+  const m = {overview:'t-overview','add-customer':'t-add-customer',customers:'t-customers',
+    measurements:'t-measurements','new-order':'t-new-order',orders:'t-orders',
+    'add-design':'t-add-design',designs:'t-designs',analytics:'t-analytics',
+    payments:'t-payments',notifications:'t-notifications'};
+  const el = document.getElementById(m[name]);
+  if (el) el.style.display = 'block';
+  document.querySelectorAll('#page-tailor-dashboard .nav-item').forEach(i => i.classList.remove('active'));
+  if (navEl) navEl.classList.add('active');
+  closeSidebar(); window.scrollTo(0,0);
+  if (name==='overview')      loadOverview();
+  if (name==='customers')     loadCustomers();
+  if (name==='orders')        loadOrders('');
+  if (name==='designs')       loadGallery('');
+  if (name==='analytics')     loadAnalytics();
+  if (name==='payments')      loadPayments();
+  if (name==='notifications') loadNotifs('t-notif-body');
+  if (name==='new-order')     { loadCustDropdown(); loadPicker(''); }
+}
+
+function cs(name, navEl) {
+  document.querySelectorAll('.csec').forEach(s => s.style.display = 'none');
+  const el = document.getElementById(name);
+  if (el) el.style.display = 'block';
+  document.querySelectorAll('#page-customer-dashboard .nav-item').forEach(i => i.classList.remove('active'));
+  if (navEl) navEl.classList.add('active');
+  closeSidebar(); window.scrollTo(0,0);
+  if (name==='c-home')    loadCHome();
+  if (name==='c-orders')  loadCOrders();
+  if (name==='c-meas')    loadCMeas();
+  if (name==='c-designs') loadCDesigns('');
+  if (name==='c-notifs')  loadNotifs('c-notif-body');
+}
+
+// ── TABS ─────────────────────────────────────────────
+function switchTab(group, idx, clickedEl) {
+  const panels = document.querySelectorAll(`[id^="${group}-tab"]`);
+  panels.forEach((p,i) => p.classList.toggle('active', i === idx));
+  if (clickedEl) {
+    const tabs = clickedEl.closest('.tabs').querySelectorAll('.tab');
+    tabs.forEach((t,i) => t.classList.toggle('active', i === idx));
+  }
+}
+
+// ── MOBILE SIDEBAR ───────────────────────────────────
+function openSidebar(id) {
+  document.getElementById(id)?.classList.add('open');
+  document.getElementById('sb-overlay')?.classList.add('open');
+}
+function closeSidebar() {
+  document.querySelectorAll('.sidebar').forEach(s => s.classList.remove('open'));
+  document.getElementById('sb-overlay')?.classList.remove('open');
+}
+
+// ── AUTH HELPERS ─────────────────────────────────────
+function bLoad(id, loading, label) {
+  const b = document.getElementById(id); if (!b) return;
+  b.disabled = loading;
+  b.innerHTML = loading ? '<div class="spin" style="border-color:rgba(255,255,255,0.3);border-top-color:white;"></div>&nbsp;Please wait…' : label;
+}
+function showErr(id, msg) { const e = document.getElementById(id); if (!e) return; e.textContent = msg; e.style.display = msg ? 'block' : 'none'; }
+function showOk(id, msg)  { const e = document.getElementById(id); if (!e) return; e.textContent = msg; e.style.display = msg ? 'block' : 'none'; }
+function val(id) { return (document.getElementById(id)?.value || '').trim(); }
+function setSession(r) { TOKEN = r.accessToken; USER = r.user; localStorage.setItem('sf_token',TOKEN); localStorage.setItem('sf_user',JSON.stringify(USER)); }
+
+// ── LOGIN ─────────────────────────────────────────────
+async function loginTailor() {
+  showErr('tl-err','');
+  const email = val('tl-email'), password = val('tl-pass');
+  if (!email||!password) { showErr('tl-err','Please enter email and password.'); return; }
+  bLoad('tl-btn',true,'Sign In as Tailor');
+  try {
+    const r = await api('POST','/auth/login',{email,password},true);
+    if (r.user.role!=='tailor') throw new Error('This account is not a tailor.');
+    setSession(r); initTailor(); navigate('page-tailor-dashboard');
+    ts('overview', document.querySelector('#page-tailor-dashboard .nav-item'));
+  } catch(e) { showErr('tl-err',e.message); }
+  bLoad('tl-btn',false,'Sign In as Tailor');
+}
+
+async function loginCustomer() {
+  showErr('cl-err','');
+  const email = val('cl-email'), password = val('cl-pass');
+  if (!email||!password) { showErr('cl-err','Please enter email and password.'); return; }
+  bLoad('cl-btn',true,'Sign In as Customer');
+  try {
+    const r = await api('POST','/auth/login',{email,password},true);
+    if (r.user.role!=='customer') throw new Error('This account is not a customer.');
+    setSession(r); initCustomer(); navigate('page-customer-dashboard');
+    cs('c-home', document.querySelector('#page-customer-dashboard .nav-item'));
+  } catch(e) { showErr('cl-err',e.message); }
+  bLoad('cl-btn',false,'Sign In as Customer');
+}
+
+let _spec = 'all';
+function pickSpec(v) {
+  _spec = v;
+  ['gents','ladies','kids','all'].forEach(s => document.getElementById('spec-'+s)?.classList.remove('active'));
+  document.getElementById('spec-'+v)?.classList.add('active');
+}
+
+async function registerTailor() {
+  showErr('tr-err','');
+  const body = {name:val('tr-name'),shopName:val('tr-shop'),email:val('tr-email'),phone:val('tr-phone'),address:val('tr-address'),city:val('tr-city'),password:val('tr-pass'),specialization:_spec};
+  if (!body.name||!body.shopName||!body.email||!body.password) { showErr('tr-err','Please fill in all required fields.'); return; }
+  bLoad('tr-btn',true,'Create Shop Account');
+  try {
+    const r = await api('POST','/auth/register/tailor',body,true);
+    setSession(r); initTailor(); navigate('page-tailor-dashboard');
+    ts('overview', document.querySelector('#page-tailor-dashboard .nav-item'));
+    toast('🎉 Welcome to StitchFlow, '+USER.name+'!');
+  } catch(e) { showErr('tr-err',e.message); }
+  bLoad('tr-btn',false,'Create Shop Account');
+}
+
+async function registerCustomer() {
+  showErr('cr-err','');
+  const body = {name:val('cr-name'),phone:val('cr-phone'),email:val('cr-email'),shopCode:val('cr-code').toUpperCase(),password:val('cr-pass')};
+  if (!body.name||!body.email||!body.password) { showErr('cr-err','Please fill in all required fields.'); return; }
+  bLoad('cr-btn',true,'Create Account');
+  try {
+    const r = await api('POST','/auth/register/customer',body,true);
+    setSession(r); initCustomer(); navigate('page-customer-dashboard');
+    cs('c-home', document.querySelector('#page-customer-dashboard .nav-item'));
+    toast('🎉 Account created! Welcome, '+USER.name+'!');
+  } catch(e) { showErr('cr-err',e.message); }
+  bLoad('cr-btn',false,'Create Account');
+}
+
+// ── FORGOT PASSWORD ───────────────────────────────────
+async function forgotStep1() {
+  showErr('fp-err',''); showOk('fp-ok','');
+  const email = val('fp-email');
+  if (!email) { showErr('fp-err','Please enter your email address.'); return; }
+  bLoad('fp-btn',true,'Send Reset Code');
+  try {
+    await api('POST','/auth/forgot-password',{email},true);
+    showOk('fp-ok','✅ Reset code sent! Check your email.');
+    document.getElementById('fp-step1').style.display = 'none';
+    document.getElementById('fp-step2').style.display = 'block';
+  } catch(e) {
+    // Backend may not support this — show manual instructions
+    showOk('fp-ok','📧 If your backend supports email, a code has been sent. Otherwise contact your administrator to reset directly in the database.');
+    document.getElementById('fp-step1').style.display = 'none';
+    document.getElementById('fp-step2').style.display = 'block';
+  }
+  bLoad('fp-btn',false,'Send Reset Code');
+}
+
+async function forgotStep2() {
+  showErr('fp-err',''); showOk('fp-ok','');
+  const code = val('fp-code'), newPassword = val('fp-newpass'), confirm = val('fp-confirm');
+  if (!code||!newPassword) { showErr('fp-err','Please fill in all fields.'); return; }
+  if (newPassword !== confirm) { showErr('fp-err','Passwords do not match.'); return; }
+  if (newPassword.length < 8) { showErr('fp-err','Password must be at least 8 characters.'); return; }
+  bLoad('fp-btn2',true,'Reset Password');
+  try {
+    await api('POST','/auth/reset-password',{code,newPassword},true);
+    showOk('fp-ok','✅ Password reset successfully! You can now login.');
+    setTimeout(() => navigate('page-tailor-login'), 2000);
+  } catch(e) { showErr('fp-err',e.message || 'Invalid or expired reset code.'); }
+  bLoad('fp-btn2',false,'Reset Password');
+}
+
+function logout() {
+  TOKEN=''; USER=null;
+  localStorage.removeItem('sf_token'); localStorage.removeItem('sf_user');
+  navigate('page-landing'); toast('👋 Logged out.');
+}
+
+// ── INIT ──────────────────────────────────────────────
+function initTailor() {
+  if (!USER) return;
+  document.getElementById('t-greeting').textContent = USER.name.split(' ')[0];
+  document.getElementById('t-uname').textContent = USER.name;
+  document.getElementById('t-avatar').textContent = USER.name[0].toUpperCase();
+  const tp = USER.tailorProfile;
+  document.getElementById('t-shopsub').textContent = tp ? tp.shopName+' · Shop Code: '+tp.shopCode : '';
+  document.getElementById('t-urole').textContent = tp ? cap(tp.specialization)+' Tailor' : 'Tailor';
+}
+function initCustomer() {
+  if (!USER) return;
+  document.getElementById('c-hero-name').textContent = USER.name;
+  document.getElementById('c-uname').textContent = USER.name;
+  document.getElementById('c-avatar').textContent = USER.name[0].toUpperCase();
+}
+
+// ── OVERVIEW ─────────────────────────────────────────
+async function loadOverview() {
+  try {
+    const [an, ord] = await Promise.all([api('GET','/analytics'), api('GET','/orders/tailor?pageSize=5')]);
+    document.getElementById('s-total').textContent   = an.totalOrders;
+    document.getElementById('s-pending').textContent = an.pendingOrders;
+    document.getElementById('s-done').textContent    = an.completedOrders;
+    document.getElementById('s-rev').textContent     = 'Rs '+fmt(an.monthlyRevenue);
+    const pb = document.getElementById('pending-badge');
+    pb.textContent = an.pendingOrders; pb.style.display = an.pendingOrders > 0 ? '' : 'none';
+    const items = ord.items || [];
+    if (!items.length) { set('recent-orders', empty('📦','No orders yet','Create your first order')); return; }
+    set('recent-orders', tbl(['Order ID','Customer','Garment','Delivery','Status','Action'],
+      items.map(o => [
+        `<span class="text-mono">#${o.orderNumber}</span>`,
+        `<b>${esc(o.customerName)}</b>`,
+        esc(o.garmentType),
+        fmtD(o.deliveryDate),
+        badge(o.status),
+        `<button class="btn btn-outline btn-sm" onclick="openModal('${o.id}')">Manage</button>`
+      ])
+    ));
+  } catch(e) { set('recent-orders', errBlock(e.message)); }
+}
+
+// ── ADD CUSTOMER ──────────────────────────────────────
+function measObj(prefix) {
+  const f = ['neck','chest','waist','shoulder','sleeve','length','hip','thigh','inseam'];
+  const obj = {};
+  f.forEach(k => { const v = parseFloat(document.getElementById(prefix+'-'+k)?.value); if (!isNaN(v)) obj[k] = v; });
+  obj.notes = document.getElementById(prefix+'-notes')?.value || '';
+  return obj;
+}
+
+async function _registerNewCust() {
+  const name = val('ac-name'), email = val('ac-email'), pass = val('ac-pass');
+  if (!name||!email||!pass) throw new Error('Name, email and password are required.');
+  const r = await api('POST','/auth/register/customer', {
+    name, email, phone:val('ac-phone'),
+    password: pass,
+    shopCode: USER?.tailorProfile?.shopCode || ''
+  }, true);
+  return r.user.id;
+}
+
+async function saveCustomerOnly() {
+  bLoad('ac-btn',true,'Saving…');
+  try {
+    const cid = await _registerNewCust();
+    const m = measObj('ac');
+    const hasMeas = ['neck','chest','waist','shoulder','sleeve','length','hip','thigh','inseam'].some(k => m[k] !== undefined);
+    if (hasMeas) await api('POST','/measurements',{customerId:cid,...m});
+    toast('✅ Customer saved!'); clearAC(); ts('customers',null);
+  } catch(e) { toast('❌ '+e.message,true); }
+  bLoad('ac-btn',false,'Save Customer &amp; Create Order');
+}
+
+async function saveCustomerWithOrder() {
+  bLoad('ac-btn',true,'Saving…');
+  try {
+    const cid = await _registerNewCust();
+    const m = measObj('ac');
+    const hasMeas = ['neck','chest','waist','shoulder','sleeve','length','hip','thigh','inseam'].some(k => m[k] !== undefined);
+    if (hasMeas) await api('POST','/measurements',{customerId:cid,...m});
+    // Create first order
+    const garmentType = [...document.querySelectorAll('#fo-garments .garment-chip.active')].map(c=>c.textContent.trim()).join(', ') || 'Shalwar Kameez';
+    const orderData = {
+      customerId: cid, garmentType,
+      specialInstructions: (document.getElementById('fo-cloth')?.value || '') + (document.getElementById('fo-notes')?.value ? '\n'+document.getElementById('fo-notes').value : ''),
+      deliveryDate: document.getElementById('fo-delivery')?.value || null,
+      totalAmount:  parseFloat(document.getElementById('fo-total')?.value) || 0,
+      advancePaid:  parseFloat(document.getElementById('fo-advance')?.value) || 0,
+      priority:     document.getElementById('fo-priority')?.value || 'normal'
+    };
+    const order = await api('POST','/orders', orderData);
+    toast('✅ Customer added & Order #'+order.orderNumber+' created!');
+    clearAC(); ts('orders',null);
+  } catch(e) { toast('❌ '+e.message,true); }
+  bLoad('ac-btn',false,'Save Customer &amp; Create Order');
+}
+
+function clearAC() {
+  ['ac-name','ac-email','ac-phone','ac-pass','ac-neck','ac-chest','ac-waist','ac-shoulder',
+   'ac-sleeve','ac-length','ac-hip','ac-thigh','ac-inseam','ac-notes',
+   'fo-cloth','fo-notes','fo-total','fo-advance'].forEach(id => { const e = document.getElementById(id); if (e) e.value = ''; });
+  switchTab('ac',0,document.querySelector('[onclick*="switchTab(\'ac\',0"]'));
+}
+
+// ── CUSTOMERS LIST (with expandable measurements) ────
+async function loadCustomers(q = '') {
+  set('customers-tbl', loading());
+  try {
+    const d = await api('GET',`/customers?search=${encodeURIComponent(q)}&pageSize=100`);
+    const items = d.items || [];
+    document.getElementById('cust-count').textContent = items.length ? items.length+' customers' : '';
+    if (!items.length) { set('customers-tbl', empty('👥','No customers yet','Add your first customer')); return; }
+    let html = `<div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Orders</th><th>Measurements</th><th>Actions</th></tr></thead><tbody>`;
+    items.forEach(c => {
+      const hasMeas = !!c.latestMeasurement;
+      const measSummary = hasMeas
+        ? `<span style="font-size:0.72rem;color:var(--sage);cursor:pointer;" onclick="toggleExpand('row-${c.id}')">📐 View →</span>`
+        : `<span style="font-size:0.72rem;color:var(--muted);">None yet</span>`;
+      html += `<tr>
+        <td><div style="font-weight:600;">${esc(c.name)}</div><div style="font-size:0.75rem;color:var(--muted);">${esc(c.email)}</div></td>
+        <td><span class="text-mono">${c.phone||'—'}</span></td>
+        <td>${c.totalOrders}</td>
+        <td>${measSummary}</td>
+        <td><div style="display:flex;gap:0.4rem;">
+          <button class="btn btn-outline btn-sm" onclick="openCustModal('${c.id}')">👁 View</button>
+          <button class="btn btn-outline btn-sm" onclick="openMeas('${c.id}','${esc(c.name)}')">📐</button>
+          <button class="btn btn-gold btn-sm" onclick="prefillOrder('${c.id}','${esc(c.name)}')">New Order</button>
+        </div></td>
+      </tr>`;
+      if (hasMeas) {
+        const m = c.latestMeasurement;
+        html += `<tr class="expand-row" id="row-${c.id}"><td colspan="5">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:0.65rem;">
+            ${['neck','chest','waist','shoulder','sleeve','length','hip','thigh','inseam'].filter(f=>m[f]).map(f=>`<div class="m-card" style="padding:0.65rem;"><div class="m-label">${cap(f)}</div><div class="m-value" style="font-size:1.2rem;">${m[f]}"</div></div>`).join('')}
+          </div>
+          ${m.notes ? `<div style="margin-top:0.5rem;font-size:0.8rem;color:var(--muted);">📌 ${esc(m.notes)}</div>` : ''}
+          <div style="margin-top:0.5rem;font-size:0.72rem;color:var(--muted);">Updated: ${fmtD(m.updatedAt)}</div>
+        </td></tr>`;
+      }
+    });
+    html += '</tbody></table></div>';
+    set('customers-tbl', html);
+  } catch(e) { set('customers-tbl', errBlock(e.message)); }
+}
+
+function toggleExpand(rowId) {
+  const r = document.getElementById(rowId);
+  if (r) r.style.display = r.style.display === 'table-row' ? 'none' : 'table-row';
+}
+
+function debounceSearch() {
+  clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(() => loadCustomers(val('cust-search')), 400);
+}
+
+// ── CUSTOMER PROFILE MODAL ────────────────────────────
+async function openCustModal(cid) {
+  set('cm-body', loading());
+  document.getElementById('cust-modal').classList.add('open');
+  try {
+    const [custData, orders, measData] = await Promise.all([
+      api('GET',`/customers/${cid}`),
+      api('GET',`/orders/tailor?customerId=${cid}&pageSize=20`),
+      api('GET',`/measurements/customer/${cid}`)
+    ]).catch(async () => {
+      // Fallback: load customers list and find by id
+      const d = await api('GET',`/customers?pageSize=200`);
+      const c = (d.items||[]).find(x=>x.id===cid);
+      return [c, {items:[]}, []];
+    });
+    const c = custData;
+    const ords = (orders.items || orders || []);
+    const meas = (measData && measData.length) ? measData[0] : null;
+    document.getElementById('cm-title').textContent = c?.name || 'Customer Profile';
+    const fields = ['neck','chest','waist','shoulder','sleeve','length','hip','thigh','inseam'];
+    set('cm-body', `
+      <div style="display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start;flex-wrap:wrap;">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;color:white;flex-shrink:0;">${(c?.name||'?')[0].toUpperCase()}</div>
+        <div style="flex:1;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;">${esc(c?.name||'—')}</div>
+          <div style="color:var(--muted);font-size:0.85rem;">${esc(c?.email||'—')} · ${c?.phone||'—'}</div>
+          <div style="margin-top:0.5rem;display:flex;gap:0.5rem;">
+            <span class="badge badge-stitching">${ords.length} orders</span>
+            ${meas ? '<span class="badge badge-delivered">Measurements on file</span>' : '<span class="badge badge-cancelled">No measurements</span>'}
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <button class="btn btn-outline btn-sm" onclick="closeModal('cust-modal');openMeas('${c?.id}','${esc(c?.name||'')}')">📐 Measure</button>
+          <button class="btn btn-gold btn-sm" onclick="closeModal('cust-modal');prefillOrder('${c?.id}','${esc(c?.name||'')}')">New Order</button>
+        </div>
+      </div>
+      ${meas ? `
+      <div style="background:var(--gold-pale);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;">
+        <div style="font-weight:700;margin-bottom:0.75rem;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);">📐 Latest Measurements (${fmtD(meas.updatedAt)})</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:0.5rem;">
+          ${fields.filter(f=>meas[f]).map(f=>`<div class="m-card" style="padding:0.6rem;"><div class="m-label">${cap(f)}</div><div class="m-value" style="font-size:1.2rem;">${meas[f]}"</div></div>`).join('')}
+        </div>
+        ${meas.notes ? `<div style="margin-top:0.75rem;font-size:0.8rem;color:var(--muted);">📌 ${esc(meas.notes)}</div>` : ''}
+      </div>` : `<div style="background:#fff5f5;border-radius:10px;padding:1rem;margin-bottom:1.25rem;color:var(--muted);font-size:0.85rem;">No measurements on file yet. <a style="color:var(--gold);cursor:pointer;" onclick="closeModal('cust-modal');openMeas('${c?.id}','${esc(c?.name||'')}')">Add measurements →</a></div>`}
+      ${ords.length ? `
+      <div style="font-weight:700;margin-bottom:0.75rem;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);">Recent Orders</div>
+      ${tbl(['#','Garment','Date','Amount','Status',' '],ords.slice(0,5).map(o=>[
+        `<span class="text-mono">#${o.orderNumber}</span>`,
+        esc(o.garmentType), fmtD(o.deliveryDate),
+        `Rs ${fmt(o.totalAmount)}`, badge(o.status),
+        `<button class="btn btn-outline btn-sm" onclick="closeModal('cust-modal');openModal('${o.id}')">Manage</button>`
+      ]))}` : '<div class="text-muted" style="text-align:center;padding:1rem;">No orders yet</div>'}
+    `);
+  } catch(e) { set('cm-body', errBlock(e.message)); }
+}
+
+// ── MEASUREMENTS ──────────────────────────────────────
+async function openMeas(cid, name) {
+  MEAS_CUST_ID = cid;
+  document.getElementById('meas-cname').textContent = name;
+  ts('measurements', null);
+  try {
+    const hist = await api('GET',`/measurements/customer/${cid}`);
+    const h = hist || [];
+    const fields = ['neck','chest','waist','shoulder','sleeve','length','hip','thigh','inseam'];
+    if (h.length) {
+      const lat = h[0];
+      document.getElementById('meas-updated').textContent = 'Updated '+fmtD(lat.updatedAt);
+      set('meas-display', fields.map(f=>`<div class="m-card"><div class="m-label">${cap(f)}</div><div class="m-value">${lat[f]??'—'}<span class="m-unit">"</span></div></div>`).join(''));
+      fields.forEach(f => { const e = document.getElementById('em-'+f); if (e) e.value = lat[f]??''; });
+      document.getElementById('em-notes').value = lat.notes||'';
+      set('meas-history', h.map((m,i)=>
+        `<div style="border:1px solid var(--border);border-radius:10px;padding:0.9rem;margin-bottom:0.65rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+            <span style="font-weight:600;font-size:0.85rem;">${fmtD(m.createdAt)}</span>
+            ${i===0?'<span class="badge badge-stitching">Latest</span>':''}
+          </div>
+          <div style="font-size:0.78rem;color:var(--muted);">N:${m.neck||'?'}" C:${m.chest||'?'}" W:${m.waist||'?'}" Sh:${m.shoulder||'?'}" Sl:${m.sleeve||'?'}" L:${m.length||'?'}"</div>
+        </div>`
+      ).join(''));
+    } else {
+      set('meas-display','<div style="grid-column:1/-1;color:var(--muted);font-size:0.85rem;padding:0.5rem 0;">No measurements yet — fill in the form below and save.</div>');
+      set('meas-history', empty('📐','No history yet',''));
+    }
+  } catch(e) { toast('⚠️ '+e.message,true); }
+}
+
+async function saveMeasurements() {
+  if (!MEAS_CUST_ID) return;
+  bLoad('meas-save-btn',true,'Save Changes');
+  try {
+    const m = measObj('em');
+    await api('POST','/measurements',{customerId:MEAS_CUST_ID,...m});
+    toast('✅ Measurements saved!');
+    openMeas(MEAS_CUST_ID, document.getElementById('meas-cname').textContent);
+  } catch(e) { toast('❌ '+e.message,true); }
+  bLoad('meas-save-btn',false,'Save Changes');
+}
+
+// ── ORDERS ────────────────────────────────────────────
+async function loadOrders(status) {
+  set('orders-tbl', loading());
+  try {
+    const url = '/orders/tailor?pageSize=100'+(status?'&status='+status:'');
+    const d = await api('GET',url);
+    const items = d.items||[];
+    const today = new Date(); today.setHours(0,0,0,0);
+    if (!items.length) { set('orders-tbl', empty('📦','No orders found','')); return; }
+    let html = `<div class="table-wrap"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Garment</th><th>Delivery</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead><tbody>`;
+    items.forEach(o => {
+      const dDate = o.deliveryDate ? new Date(o.deliveryDate) : null;
+      const isOverdue = dDate && dDate < today && !['delivered','cancelled'].includes(o.status);
+      html += `<tr class="${isOverdue?'overdue':''}">
+        <td><span class="text-mono">#${o.orderNumber}</span>${isOverdue?'<div style="font-size:0.68rem;color:var(--rust);font-weight:700;">OVERDUE</div>':''}</td>
+        <td><b>${esc(o.customerName)}</b></td>
+        <td>${esc(o.garmentType)}</td>
+        <td style="${isOverdue?'color:var(--rust);font-weight:600;':''}">${fmtD(o.deliveryDate)}</td>
+        <td><span class="text-mono">Rs ${fmt(o.totalAmount)}</span></td>
+        <td>${badge(o.status)}</td>
+        <td><div style="display:flex;gap:0.4rem;">
+          <button class="btn btn-outline btn-sm" onclick="openModal('${o.id}')">Manage</button>
+          ${o.status==='ready'?`<button class="btn btn-sage btn-sm" onclick="notifyCustomer('${o.id}','${esc(o.customerName)}')">📱 Notify</button>`:''}
+        </div></td>
+      </tr>`;
+    });
+    html += '</tbody></table></div>';
+    set('orders-tbl', html);
+  } catch(e) { set('orders-tbl', errBlock(e.message)); }
+}
+
+function filterOrders(chip, status) {
+  chip.closest('.filter-bar').querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active'); loadOrders(status);
+}
+
+async function loadCustDropdown() {
+  try {
+    const d = await api('GET','/customers?pageSize=200');
+    const sel = document.getElementById('o-customer');
+    sel.innerHTML = '<option value="">Select customer…</option>'+(d.items||[]).map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
+  } catch(e) {}
+}
+
+async function loadPicker(category) {
+  const el = document.getElementById('o-picker');
+  el.innerHTML = loading('grid-column:1/-1;');
+  try {
+    const url = '/designs/tailor?pageSize=50'+(category?'&category='+category:'');
+    const d = await api('GET',url);
+    const designs = d.items||[];
+    if (!designs.length) { el.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🎨</div><div class="empty-text">No designs yet</div><div class="empty-sub"><a style="color:var(--gold);cursor:pointer;" onclick="ts('add-design',null)">Add your first design →</a></div></div>`; return; }
+    el.innerHTML = designs.map(d=>`<div class="design-card" style="cursor:pointer;" onclick="pickDesign('${d.id}','${esc(d.name)}',this)">
+      <div class="design-img">${d.primaryImageUrl?`<img src="${d.primaryImageUrl}" alt="${esc(d.name)}">`:dEmoji(d.garmentType)}</div>
+      <div class="design-body"><div class="design-name">${esc(d.name)}</div>
+      <div style="font-size:0.72rem;color:var(--muted);">${cap(d.category)} · ${d.garmentType}</div>
+      <div class="design-meta"><span>${d.stitchingDays}d</span><span class="design-price">Rs ${fmt(d.basePrice)}</span></div></div>
+    </div>`).join('');
+  } catch(e) { el.innerHTML = errBlock(e.message,'grid-column:1/-1;'); }
+}
+
+function filterPicker(chip, cat) {
+  chip.closest('.filter-bar').querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active'); loadPicker(cat);
+}
+
+function pickDesign(id, name, card) {
+  document.getElementById('o-picker').querySelectorAll('.design-card').forEach(c=>c.classList.remove('selected'));
+  card.classList.add('selected');
+  document.getElementById('o-design-name').value = name;
+  document.getElementById('o-design-id').value = id;
+  toast('✅ "'+name+'" selected!');
+}
+
+async function createOrder() {
+  const customerId = document.getElementById('o-customer').value;
+  if (!customerId) { toast('⚠️ Please select a customer.',true); return; }
+  const garmentType = [...document.querySelectorAll('#o-garments .garment-chip.active')].map(c=>c.textContent.trim()).join(', ')||'Shalwar Kameez';
+  const cloth = document.getElementById('o-cloth')?.value||'';
+  const notes = document.getElementById('o-notes')?.value||'';
+  bLoad('o-btn',true,'Create Order');
+  try {
+    const order = await api('POST','/orders',{
+      customerId, garmentType,
+      designId: document.getElementById('o-design-id').value||null,
+      deliveryDate: document.getElementById('o-delivery').value||null,
+      priority: document.getElementById('o-priority').value,
+      totalAmount: parseFloat(document.getElementById('o-total').value)||0,
+      advancePaid: parseFloat(document.getElementById('o-advance').value)||0,
+      specialInstructions: [cloth,notes].filter(Boolean).join('\n')
+    });
+    toast('✅ Order #'+order.orderNumber+' created!');
+    ['o-design-name','o-design-id','o-total','o-advance','o-notes','o-cloth'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+    ts('orders',null);
+  } catch(e) { toast('❌ '+e.message,true); }
+  bLoad('o-btn',false,'Create Order');
+}
+
+function prefillOrder(cid) {
+  ts('new-order',null);
+  setTimeout(() => { const sel = document.getElementById('o-customer'); if(sel) sel.value = cid; }, 600);
+}
+
+// ── ORDER MODAL ───────────────────────────────────────
+async function openModal(orderId) {
+  MODAL_ORDER_ID = orderId;
+  try {
+    const o = await api('GET','/orders/'+orderId);
+    MODAL_ORDER_DATA = o;
+    document.getElementById('m-title').textContent = 'Order #'+o.orderNumber;
+    set('m-info',`<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;">
+      <div><div style="font-weight:700;font-size:1rem;">${esc(o.customerName)} — ${esc(o.garmentType)}</div>
+      <div style="font-size:0.8rem;color:var(--muted);">Created: ${fmtD(o.createdAt)}</div></div>
+      <div style="text-align:right;"><div style="font-size:0.75rem;color:var(--muted);">Balance Due</div>
+      <div style="font-size:1.3rem;font-weight:700;${o.balanceDue>0?'color:var(--rust)':'color:var(--sage)'}">Rs ${fmt(o.balanceDue)}</div></div>
+    </div>`);
+    document.getElementById('m-status').value   = o.status;
+    document.getElementById('m-delivery').value = o.deliveryDate ? o.deliveryDate.split('T')[0] : '';
+    document.getElementById('m-note').value     = o.tailorNote||'';
+    document.getElementById('m-total').value    = o.totalAmount;
+    document.getElementById('m-advance').value  = o.advancePaid;
+    document.getElementById('m-priority').value = o.priority||'normal';
+    document.getElementById('m-bal-display').textContent = 'Rs '+fmt(o.balanceDue);
+    // Print slip
+    set('slip-content', buildSlip(o));
+    document.getElementById('order-modal').classList.add('open');
+    switchTab('mo',0,null);
+    document.querySelector('#order-modal .tabs .tab')?.classList.add('active');
+  } catch(e) { toast('❌ Could not load order: '+e.message,true); }
+}
+
+function buildSlip(o) {
+  return `<div style="font-family:'DM Sans',sans-serif;padding:1rem;border:2px solid var(--ink);border-radius:12px;">
+    <div style="text-align:center;margin-bottom:1rem;border-bottom:1px solid var(--warm);padding-bottom:1rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--gold);">StitchFlow</div>
+      <div style="font-size:0.75rem;color:var(--muted);">${esc(USER?.tailorProfile?.shopName||'')}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.85rem;margin-bottom:1rem;">
+      <div><b>Order #:</b> ${o.orderNumber}</div>
+      <div><b>Date:</b> ${fmtD(o.createdAt)}</div>
+      <div><b>Customer:</b> ${esc(o.customerName)}</div>
+      <div><b>Delivery:</b> ${fmtD(o.deliveryDate)}</div>
+      <div><b>Garment:</b> ${esc(o.garmentType)}</div>
+      <div><b>Status:</b> ${cap(o.status)}</div>
+      <div><b>Total:</b> Rs ${fmt(o.totalAmount)}</div>
+      <div><b>Advance:</b> Rs ${fmt(o.advancePaid)}</div>
+      <div style="grid-column:1/-1;"><b>Balance Due:</b> <span style="color:var(--rust);font-weight:700;">Rs ${fmt(o.balanceDue)}</span></div>
+    </div>
+    ${o.specialInstructions ? `<div style="font-size:0.8rem;border-top:1px solid var(--warm);padding-top:0.75rem;"><b>Instructions:</b> ${esc(o.specialInstructions)}</div>` : ''}
+    ${o.tailorNote ? `<div style="font-size:0.8rem;margin-top:0.5rem;"><b>Note:</b> ${esc(o.tailorNote)}</div>` : ''}
+    <div style="margin-top:1rem;border-top:1px solid var(--warm);padding-top:0.75rem;display:flex;justify-content:space-between;font-size:0.78rem;color:var(--muted);">
+      <span>Customer Signature: ___________</span><span>Tailor Signature: ___________</span>
+    </div>
+  </div>`;
+}
+
+async function saveModal(notify) {
+  if (!MODAL_ORDER_ID) return;
+  const btnId = notify?'m-notify-btn':'m-save-btn';
+  bLoad(btnId,true,notify?'Save &amp; Notify':'Save Changes');
+  try {
+    await api('PUT','/orders/'+MODAL_ORDER_ID,{
+      status:         document.getElementById('m-status').value,
+      deliveryDate:   document.getElementById('m-delivery').value||null,
+      tailorNote:     document.getElementById('m-note').value,
+      totalAmount:    parseFloat(document.getElementById('m-total').value)||0,
+      advancePaid:    parseFloat(document.getElementById('m-advance').value)||0,
+      priority:       document.getElementById('m-priority').value,
+      notifyCustomer: notify
+    });
+    toast(notify?'📱 Updated & notified!':'✅ Order updated!');
+    closeModal('order-modal'); loadOrders(''); loadOverview();
+  } catch(e) { toast('❌ '+e.message,true); }
+  bLoad(btnId,false,notify?'Save &amp; Notify':'Save Changes');
+}
+
+async function recordPayment() {
+  if (!MODAL_ORDER_ID) return;
+  const amount = parseFloat(document.getElementById('pay-amount').value);
+  if (!amount||amount<=0) { toast('⚠️ Enter a valid amount.',true); return; }
+  bLoad('pay-btn',true,'Recording…');
+  try {
+    await api('POST','/payments',{
+      orderId:       MODAL_ORDER_ID,
+      amount,
+      paymentMethod: document.getElementById('pay-method').value,
+      notes:         document.getElementById('pay-note').value
+    });
+    toast('✅ Payment of Rs '+fmt(amount)+' recorded!');
+    document.getElementById('pay-amount').value = '';
+    document.getElementById('pay-note').value = '';
+    // Refresh order data
+    const o = await api('GET','/orders/'+MODAL_ORDER_ID);
+    document.getElementById('m-advance').value = o.advancePaid;
+    document.getElementById('m-bal-display').textContent = 'Rs '+fmt(o.balanceDue);
+  } catch(e) { toast('❌ '+e.message,true); }
+  bLoad('pay-btn',false,'Record Payment');
+}
+
+async function notifyCustomer(orderId, name) {
+  try {
+    await api('PUT','/orders/'+orderId,{status:'ready',notifyCustomer:true});
+    toast('📱 '+name+' has been notified!'); loadOrders('');
+  } catch(e) { toast('❌ '+e.message,true); }
+}
+
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+
+// ── DESIGNS (with image upload) ───────────────────────
+function previewDesignImg(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5*1024*1024) { toast('⚠️ Image too large. Max 5MB.',true); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    _designImgBase64 = e.target.result;
+    const preview = document.getElementById('d-img-preview');
+    preview.src = _designImgBase64; preview.style.display = 'block';
+    document.getElementById('d-upload-hint').style.display = 'none';
+    document.getElementById('d-img-status').textContent = '✅ Photo ready — '+file.name;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function publishDesign() {
+  const name = val('d-name');
+  if (!name) { toast('⚠️ Design name is required.',true); return; }
+  bLoad('d-btn',true,'Publishing…');
+  try {
+    await api('POST','/designs',{
+      name,
+      category:      document.getElementById('d-cat').value,
+      garmentType:   document.getElementById('d-garment').value,
+      basePrice:     parseFloat(document.getElementById('d-price').value)||0,
+      stitchingDays: parseInt(document.getElementById('d-days').value)||7,
+      description:   document.getElementById('d-desc').value,
+      primaryImageUrl: _designImgBase64 || null
+    });
+    toast('✅ Design "'+name+'" published!');
+    clearDesign(); ts('designs',null);
+  } catch(e) { toast('❌ '+e.message,true); }
+  bLoad('d-btn',false,'Publish Design');
+}
+
+function clearDesign() {
+  ['d-name','d-price','d-desc'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  document.getElementById('d-days').value='7'; _designImgBase64=null;
+  const p=document.getElementById('d-img-preview'); if(p){p.src='';p.style.display='none';}
+  const h=document.getElementById('d-upload-hint'); if(h) h.style.display='';
+  document.getElementById('d-img-status').textContent='';
+  const fi=document.getElementById('d-img-file'); if(fi) fi.value='';
+}
+
+async function loadGallery(category) {
+  const el = document.getElementById('gallery-grid');
+  el.innerHTML = loading('grid-column:1/-1;');
+  try {
+    const url = '/designs/tailor?pageSize=100'+(category?'&category='+category:'');
+    const d = await api('GET',url);
+    const items = d.items||[];
+    if (!items.length) { el.innerHTML=`<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🎨</div><div class="empty-text">No designs yet</div><div class="empty-sub"><a style="color:var(--gold);cursor:pointer;" onclick="ts('add-design',null)">Add your first design →</a></div></div>`; return; }
+    el.innerHTML = items.map(d=>`<div class="design-card">
+      <div class="design-img">
+        ${d.primaryImageUrl?`<img src="${d.primaryImageUrl}" alt="${esc(d.name)}">`:dEmoji(d.garmentType)}
+        <label class="design-img-upload" title="Update photo">
+          <input type="file" accept="image/*" style="display:none;position:absolute;" onchange="updateDesignImg('${d.id}',this)">
+          📷 Update Photo
+        </label>
+      </div>
+      <div class="design-body">
+        <div class="design-name">${esc(d.name)}</div>
+        <div style="font-size:0.72rem;color:var(--muted);">${cap(d.category)} · ${d.garmentType}</div>
+        <div class="design-meta">
+          <span class="badge ${d.isActive?'badge-stitching':'badge-cancelled'}">${d.isActive?'Active':'Hidden'}</span>
+          <span class="design-price">Rs ${fmt(d.basePrice)}</span>
+        </div>
+        <div style="margin-top:0.6rem;display:flex;gap:0.4rem;">
+          <button class="btn btn-danger btn-sm" onclick="removeDesign('${d.id}',this)">Remove</button>
+        </div>
+      </div>
+    </div>`).join('');
+  } catch(e) { el.innerHTML = errBlock(e.message,'grid-column:1/-1;'); }
+}
+
+async function updateDesignImg(designId, input) {
+  const file = input.files[0]; if (!file) return;
+  if (file.size > 5*1024*1024) { toast('⚠️ Image too large. Max 5MB.',true); return; }
+  toast('⏳ Uploading photo…');
+  const reader = new FileReader();
+  reader.onload = async e => {
+    try {
+      await api('PUT','/designs/'+designId,{primaryImageUrl:e.target.result});
+      toast('✅ Design photo updated!'); loadGallery('');
+    } catch(err) { toast('❌ '+err.message,true); }
+  };
+  reader.readAsDataURL(file);
+}
+
+function filterGallery(chip, cat) {
+  chip.closest('.filter-bar').querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active'); loadGallery(cat);
+}
+
+async function removeDesign(designId, btn) {
+  if (!confirm('Remove this design?')) return;
+  btn.disabled = true;
+  try { await api('DELETE','/designs/'+designId); toast('✅ Design removed.'); loadGallery(''); }
+  catch(e) { toast('❌ '+e.message,true); btn.disabled=false; }
+}
+
+// ── ANALYTICS ─────────────────────────────────────────
+async function loadAnalytics() {
+  try {
+    const d = await api('GET','/analytics');
+    document.getElementById('a-rev').textContent = 'Rs '+fmt(d.monthlyRevenue);
+    document.getElementById('a-ord').textContent = d.totalOrders;
+    document.getElementById('a-rep').textContent = d.repeatCustomerPercent+'%';
+    document.getElementById('a-rat').textContent = d.averageRating||'—';
+    const revMax = Math.max(...(d.monthlyBreakdown||[]).map(m=>m.revenue),1);
+    set('chart-rev',(d.monthlyBreakdown||[]).map(m=>`<div class="chart-bar-item"><div class="chart-bar-label">${m.month}</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:${Math.round(m.revenue/revMax*100)}%"></div></div><div class="chart-bar-val">Rs ${fmt(m.revenue)}</div></div>`).join('')||'<div class="text-muted" style="padding:1rem;">No data yet</div>');
+    const garMax = Math.max(...(d.garmentTypeCounts||[]).map(g=>g.count),1);
+    set('chart-gar',(d.garmentTypeCounts||[]).slice(0,7).map(g=>`<div class="chart-bar-item"><div class="chart-bar-label">${g.garmentType}</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:${Math.round(g.count/garMax*100)}%"></div></div><div class="chart-bar-val">${g.count}</div></div>`).join('')||'<div class="text-muted" style="padding:1rem;">No data yet</div>');
+    const desMax = Math.max(...(d.topDesigns||[]).map(x=>x.orderCount),1);
+    set('chart-des',(d.topDesigns||[]).map(x=>`<div class="chart-bar-item"><div class="chart-bar-label">${x.designName}</div><div class="chart-bar-track"><div class="chart-bar-fill" style="width:${Math.round(x.orderCount/desMax*100)}%"></div></div><div class="chart-bar-val">${x.orderCount}</div></div>`).join('')||'<div class="text-muted" style="padding:1rem;">No data yet</div>');
+    set('chart-sum',`<div style="display:flex;flex-direction:column;gap:0.65rem;">
+      <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:var(--gold-pale);border-radius:10px;"><span style="font-weight:600;">Total Revenue</span><span class="text-mono" style="font-weight:700;">Rs ${fmt(d.totalRevenue)}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:var(--gold-pale);border-radius:10px;"><span style="font-weight:600;">Total Customers</span><span class="badge badge-stitching">${d.totalCustomers}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:var(--gold-pale);border-radius:10px;"><span style="font-weight:600;">Completed Orders</span><span class="badge badge-delivered">${d.completedOrders}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:var(--gold-pale);border-radius:10px;"><span style="font-weight:600;">Active Orders</span><span class="badge badge-progress">${d.pendingOrders}</span></div>
+    </div>`);
+  } catch(e) { toast('⚠️ Analytics: '+e.message,true); }
+}
+
+// ── PAYMENTS ──────────────────────────────────────────
+async function loadPayments() {
+  try {
+    const [payments, ordData] = await Promise.all([api('GET','/payments/tailor'), api('GET','/orders/tailor?pageSize=500')]);
+    const totalReceived  = payments.reduce((s,p)=>s+p.amount,0);
+    const pendingBalance = (ordData.items||[]).reduce((s,o)=>s+Math.max(0,o.totalAmount-o.advancePaid),0);
+    document.getElementById('p-recv').textContent = 'Rs '+fmt(totalReceived);
+    document.getElementById('p-due').textContent  = 'Rs '+fmt(pendingBalance);
+    document.getElementById('p-cnt').textContent  = new Set(payments.map(p=>p.orderId)).size;
+    if (!payments.length) { set('pay-tbl', empty('💳','No payments recorded yet','')); return; }
+    set('pay-tbl', tbl(['Order','Customer','Amount','Method','Date','Status'],
+      payments.map(p=>[
+        `<span class="text-mono">#${p.orderNumber}</span>`,
+        `<b>${esc(p.customerName)}</b>`,
+        `<span class="text-mono" style="font-weight:600;">Rs ${fmt(p.amount)}</span>`,
+        cap(p.paymentMethod.replace('_',' ')),
+        fmtD(p.paymentDate),
+        `<span class="badge badge-paid">${cap(p.status)}</span>`
+      ])
+    ));
+  } catch(e) { toast('⚠️ Payments: '+e.message,true); }
+}
+
+// ── NOTIFICATIONS ─────────────────────────────────────
+async function loadNotifs(targetId) {
+  set(targetId, loading());
+  try {
+    const notifs = await api('GET','/notifications');
+    const unread = notifs.filter(n=>!n.isRead).length;
+    ['t-notif-cnt','cn-badge'].forEach(id=>{const el=document.getElementById(id);if(el){el.style.display=unread>0?'':'none';el.textContent=unread;}});
+    const dot=document.getElementById('notif-dot'); if(dot) dot.style.display=unread>0?'block':'none';
+    if (!notifs.length) { set(targetId, empty('🔔','No notifications yet','')); return; }
+    const icons={order_update:'📦',payment:'💳',measurement:'📐',system:'🔔',review:'⭐'};
+    set(targetId, notifs.map(n=>`<div onclick="markOneRead('${n.id}','${targetId}')" style="display:flex;gap:1rem;padding:1rem;border-bottom:1px solid var(--warm);cursor:pointer;${!n.isRead?'background:var(--gold-pale);border-radius:10px;margin-bottom:0.35rem;':''}">
+      <div style="font-size:1.5rem;flex-shrink:0;">${icons[n.type]||'🔔'}</div>
+      <div style="flex:1;"><div style="font-weight:${n.isRead?'500':'700'};font-size:0.9rem;">${esc(n.title)}</div>
+      <div style="font-size:0.8rem;color:var(--muted);margin-top:0.2rem;">${esc(n.message)}</div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-top:0.35rem;">${timeAgo(n.createdAt)}${!n.isRead?' · <b style="color:var(--gold);">Unread</b>':''}</div></div>
+    </div>`).join(''));
+  } catch(e) { set(targetId, errBlock(e.message)); }
+}
+async function markOneRead(id, targetId) { try { await api('PUT','/notifications/'+id+'/read'); await loadNotifs(targetId); } catch(e) {} }
+async function markAllRead() {
+  try { await api('PUT','/notifications/read-all'); toast('✅ All read.');
+    if (USER?.role==='tailor') loadNotifs('t-notif-body');
+    if (USER?.role==='customer') loadNotifs('c-notif-body');
+  } catch(e) { toast('❌ '+e.message,true); }
+}
+
+// ── CUSTOMER PORTAL ───────────────────────────────────
+async function loadCHome() {
+  set('c-recent', loading());
+  try {
+    const d = await api('GET','/orders/customer?pageSize=10');
+    const orders = d.items||[];
+    const active = orders.filter(o=>!['delivered','cancelled'].includes(o.status));
+    document.getElementById('c-s1').textContent = d.totalCount||orders.length;
+    document.getElementById('c-s2').textContent = active.length;
+    document.getElementById('c-s3').textContent = orders.filter(o=>o.status==='delivered').length;
+    if (!orders.length) { set('c-recent', empty('📦','No orders yet','Your tailor will create orders for you')); return; }
+    set('c-recent', tbl(['Order','Garment','Delivery','Amount','Status',''],
+      orders.slice(0,5).map(o=>[
+        `<span class="text-mono">#${o.orderNumber}</span>`,
+        esc(o.garmentType), fmtD(o.deliveryDate),
+        `<span class="text-mono">Rs ${fmt(o.totalAmount)}</span>`,
+        badge(o.status),
+        `<button class="btn btn-outline btn-sm" onclick="quickTrack('${o.orderNumber}')">Track</button>`
+      ])
+    ));
+  } catch(e) { set('c-recent', errBlock(e.message)); }
+}
+
+async function loadCOrders() {
+  set('c-orders-tbl', loading());
+  try {
+    const d = await api('GET','/orders/customer?pageSize=50');
+    const orders = d.items||[];
+    if (!orders.length) { set('c-orders-tbl', empty('📦','No orders yet','')); return; }
+    set('c-orders-tbl', tbl(['Order','Tailor','Garment','Delivery','Total','Balance','Status',''],
+      orders.map(o=>[
+        `<span class="text-mono">#${o.orderNumber}</span>`,
+        esc(o.tailorShopName), esc(o.garmentType), fmtD(o.deliveryDate),
+        `<span class="text-mono">Rs ${fmt(o.totalAmount)}</span>`,
+        `<span class="text-mono" style="${o.balanceDue>0?'color:var(--rust);font-weight:600;':'color:var(--sage);'}">Rs ${fmt(o.balanceDue)}</span>`,
+        badge(o.status),
+        `<button class="btn btn-outline btn-sm" onclick="quickTrack('${o.orderNumber}')">Track</button>`
+      ])
+    ));
+  } catch(e) { set('c-orders-tbl', errBlock(e.message)); }
+}
+
+async function trackOrder() {
+  const num = document.getElementById('track-inp').value.trim().replace(/^#/,'').toUpperCase();
+  if (!num) { toast('⚠️ Enter an order number.',true); return; }
+  set('track-result',`<div class="card">${loading()}</div>`);
+  try {
+    const order = await api('GET','/orders/track/'+num,null,true);
+    renderTrackResult(order);
+  } catch(e) { set('track-result',`<div class="card">${empty('🔍','Order not found','Check the order number and try again')}</div>`); }
+}
+
+function quickTrack(num) { cs('c-track',null); document.getElementById('track-inp').value=num; trackOrder(); }
+
+function renderTrackResult(order) {
+  const steps=['pending','cutting','stitching','finishing','ready','delivered'];
+  const icons=['📋','✂️','🧵','🔍','✅','🚀'];
+  const idx=steps.indexOf(order.status);
+  const tl=steps.map((s,i)=>`<div class="tl-step ${i<idx?'done':i===idx?'current':''}">
+    <div class="tl-dot">${i<idx?'✓':icons[i]}</div><div class="tl-label">${cap(s)}</div>
+  </div>`).join('');
+  set('track-result',`<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.5rem;">
+      <div><div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;">${esc(order.garmentType)}</div>
+      <div style="font-size:0.85rem;color:var(--muted);margin-top:0.2rem;">Order #${order.orderNumber} · ${esc(order.tailorShopName)}</div></div>
+      ${badge(order.status)}
+    </div>
+    <div class="timeline">${tl}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.5rem;">
+      <div style="background:var(--gold-pale);border-radius:10px;padding:1rem;text-align:center;"><div style="font-size:0.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;margin-bottom:0.3rem;">Placed On</div><div style="font-weight:600;">${fmtD(order.createdAt)}</div></div>
+      <div style="background:var(--gold-pale);border-radius:10px;padding:1rem;text-align:center;"><div style="font-size:0.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;margin-bottom:0.3rem;">Est. Delivery</div><div style="font-weight:600;color:var(--sage);">${order.deliveryDate?fmtD(order.deliveryDate):'TBD'}</div></div>
+      <div style="background:var(--gold-pale);border-radius:10px;padding:1rem;text-align:center;"><div style="font-size:0.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;margin-bottom:0.3rem;">Balance Due</div><div style="font-weight:600;${order.balanceDue>0?'color:var(--rust)':'color:var(--sage)'}">Rs ${fmt(order.balanceDue)}</div></div>
+    </div>
+    ${order.tailorNote?`<div style="margin-top:1.25rem;padding:1rem;background:#f0fdf4;border-radius:10px;border:1px solid #bbf7d0;font-size:0.85rem;color:var(--sage);">💬 <b>Tailor Note:</b> ${esc(order.tailorNote)}</div>`:''}
+  </div>`);
+}
+
+async function loadCMeas() {
+  set('c-meas-content', loading());
+  try {
+    const m = await api('GET','/measurements/me');
+    if (!m) throw new Error('none');
+    const fields=['neck','chest','waist','shoulder','sleeve','length','hip','thigh','inseam'];
+    set('c-meas-content',`<div class="card">
+      <div class="card-header"><div><div class="card-title">My Measurements</div><div style="font-size:0.75rem;color:var(--muted);">Last updated: ${fmtD(m.updatedAt)}</div></div></div>
+      <div class="measurement-grid">${fields.filter(f=>m[f]).map(f=>`<div class="m-card"><div class="m-label">${cap(f)}</div><div class="m-value">${m[f]}<span class="m-unit">"</span></div></div>`).join('')}</div>
+      ${m.notes?`<div style="margin-top:1rem;padding:0.85rem;background:var(--gold-pale);border-radius:10px;font-size:0.82rem;">📌 <b>Note:</b> ${esc(m.notes)}</div>`:''}
+    </div>`);
+  } catch(e) { set('c-meas-content',`<div class="card">${empty('📐','No measurements on file','Your tailor will add your measurements when you visit the shop')}</div>`); }
+}
+
+async function loadCDesigns(category) {
+  const el = document.getElementById('c-design-grid');
+  el.innerHTML = loading('grid-column:1/-1;');
+  try {
+    const url='/designs?pageSize=100'+(category?'&category='+category:'');
+    const d = await api('GET',url);
+    const items = d.items||[];
+    if (!items.length) { el.innerHTML=`<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🎨</div><div class="empty-text">No designs available yet</div></div>`; return; }
+    el.innerHTML = items.map(d=>`<div class="design-card">
+      <div class="design-img">${d.primaryImageUrl?`<img src="${d.primaryImageUrl}" alt="${esc(d.name)}">`:dEmoji(d.garmentType)}</div>
+      <div class="design-body">
+        <div class="design-name">${esc(d.name)}</div>
+        <div style="font-size:0.72rem;color:var(--muted);">${cap(d.category)} · ${d.garmentType}</div>
+        <div class="design-meta"><span style="font-size:0.72rem;">${esc(d.tailorShopName)}</span><span class="design-price">Rs ${fmt(d.basePrice)}</span></div>
+        <button class="btn btn-gold btn-sm" style="width:100%;margin-top:0.6rem;" onclick="toast('✅ ${esc(d.name)} — interest noted! Your tailor will be in touch.')">Request Design</button>
+      </div>
+    </div>`).join('');
+  } catch(e) { el.innerHTML = errBlock(e.message,'grid-column:1/-1;'); }
+}
+
+function filterCDesigns(chip, cat) {
+  chip.closest('.filter-bar').querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active'); loadCDesigns(cat);
+}
+
+// ── UI HELPERS ────────────────────────────────────────
+function toggleG(el) { el.classList.toggle('active'); }
+function set(id, html) { const e=document.getElementById(id); if(e) e.innerHTML=html; }
+function loading(s='') { return `<div class="loading-block" style="${s}"><div class="spin"></div></div>`; }
+function empty(icon, text, sub) { return `<div class="empty-state"><div class="empty-icon">${icon}</div><div class="empty-text">${text}</div>${sub?`<div class="empty-sub">${sub}</div>`:''}</div>`; }
+function errBlock(msg, style='') { return `<div class="empty-state" style="${style}"><div class="empty-icon">⚠️</div><div class="empty-text">Something went wrong</div><div class="empty-sub">${esc(msg)}</div></div>`; }
+function tbl(headers, rows) { return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
+function badge(status) {
+  const m={pending:'badge-pending',in_progress:'badge-progress',cutting:'badge-cutting',stitching:'badge-stitching',finishing:'badge-finishing',ready:'badge-ready',delivered:'badge-delivered',cancelled:'badge-cancelled',paid:'badge-paid'};
+  return `<span class="badge ${m[status]||'badge-pending'}">${cap((status||'').replace('_',' '))}</span>`;
+}
+function dEmoji(gt) { return {'Sherwani':'🌟','Shalwar Kameez':'✨','Pant Coat':'🖤','Suit':'💼','Kurta':'🌿','Waistcoat':'🎩','Frock':'🌸','Blouse':'👘','Sharara':'👑'}[gt]||'👔'; }
+function fmt(n) { return Number(n||0).toLocaleString('en-PK'); }
+function fmtD(d) { if(!d) return '—'; return new Date(d).toLocaleDateString('en-PK',{year:'numeric',month:'short',day:'numeric'}); }
+function cap(s) { return s ? s.charAt(0).toUpperCase()+s.slice(1) : ''; }
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;'); }
+function timeAgo(d) { const s=Math.floor((Date.now()-new Date(d))/1000); if(s<60)return 'just now'; if(s<3600)return Math.floor(s/60)+'m ago'; if(s<86400)return Math.floor(s/3600)+'h ago'; return Math.floor(s/86400)+'d ago'; }
+
+// ── KEYBOARD & OUTSIDE CLICK ──────────────────────────
+document.addEventListener('keydown', e => { if(e.key==='Escape') { closeModal('order-modal'); closeModal('cust-modal'); }});
+['order-modal','cust-modal'].forEach(id => {
+  document.getElementById(id)?.addEventListener('click', function(e) { if(e.target===this) closeModal(id); });
+});
+
+// ── AUTO LOGIN ────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  if (TOKEN && USER) {
+    if (USER.role==='tailor') {
+      initTailor(); navigate('page-tailor-dashboard');
+      ts('overview', document.querySelector('#page-tailor-dashboard .nav-item'));
+    } else if (USER.role==='customer') {
+      initCustomer(); navigate('page-customer-dashboard');
+      cs('c-home', document.querySelector('#page-customer-dashboard .nav-item'));
+    }
+  }
+});
+</script>
+</body>
+</html>
